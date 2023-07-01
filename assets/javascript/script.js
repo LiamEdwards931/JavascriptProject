@@ -46,11 +46,11 @@ window.addEventListener('load', function () {
             this.velocityY = 0;
             this.gravity = 1;
         }
-        /**parameters for the dog char to be drawn */
+        /**parameters for the rex char to be drawn */
         draw(context) {
             context.fillStyle = 'white';
             context.fillRect(this.x, this.y, this.width, this.height);
-            context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(input) {
             // controls for the rex char 
@@ -77,6 +77,7 @@ window.addEventListener('load', function () {
             }
             if (this.y > this.gameHeight - this.height) this.y = this.gameHeight - this.height;
         }
+        //checks if the sprite is on the bottom of the screen. 
         onGround() {
             return this.y >= this.gameHeight - this.height;
         }
@@ -103,7 +104,7 @@ window.addEventListener('load', function () {
             if (this.x < 0 - this.width) this.x = 0;
         }
     }
-
+    //Class structure for the Egge enemies.
     class EggEnemy {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
@@ -113,18 +114,34 @@ window.addEventListener('load', function () {
             this.width = 150;
             this.height = 150;
             this.image = document.getElementById('eggenemy');
+            this.frameX = 0;
+            this.frameY = 0;
         }
         draw(context) {
-            context.drawImage(this.image, this.x, this.y);
+            //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
+            context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update() {
 
         }
     };
+
+    class Meat {
+        constructor(gameWidth, gameHeight) {
+            this.gameWidth = gameWidth;
+            this.gameHeight = gameHeight;
+            this.x = 0;
+            this.y = 0;
+            this.width = 180;
+            this.height = 180;
+            this.image = document.getElementById('meat');
+        }
+    }
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
     const eggEnemy = new EggEnemy();
+    const meat = new Meat();
 
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
