@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    border: none;
+    padding: 0;
+    background: black;
+}
+
+
+#canvas1 {
+    border: 3px solid white;
+    position: absolute;
+    width: 800px;
+    height: 720px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#rex-char,
+#enemy-1,
+#background,
+#slug {
+    display: none;
+}
