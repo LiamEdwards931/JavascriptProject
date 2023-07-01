@@ -30,19 +30,19 @@ window.addEventListener('load', function () {
     }
 
     //Class to create the Player character object with 2 arguments to keep the character within the game. 
-    class Rex {
+    class Dog {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
-            this.width = 267; //SpriteWidth
-            this.height = 150; //SpriteHeight
+            this.width = 200; //SpriteWidth
+            this.height = 200; //SpriteHeight
             this.x = 0;
             this.y = this.gameHeight - this.height; // stands the character at bottom of screen
-            this.image = document.getElementById('rex-char');
+            this.image = document.getElementById('dog-char');
             this.frameX = 0;
-            this.frameY = 3;
+            this.frameY = 0;
         }
-        /**parameters for the rex char to be drawn */
+        /**parameters for the dog char to be drawn */
         draw(context) {
             context.fillStyle = 'white';
             context.fillRect(this.x, this.y, this.width, this.height);
@@ -53,7 +53,7 @@ window.addEventListener('load', function () {
         }
     }
     const Input = new Controls();
-    const rexChar = new Rex(canvas.width, canvas.height);
+    const rexChar = new Dog(canvas.width, canvas.height);
 
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
