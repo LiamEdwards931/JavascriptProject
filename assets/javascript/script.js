@@ -80,7 +80,7 @@ window.addEventListener('load', function () {
             return this.y >= this.gameHeight - this.height;
         }
     }
-    
+
     class Background {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
@@ -104,7 +104,7 @@ window.addEventListener('load', function () {
     }
 
     class Enemy {
-        constructor(gameWidth, gameHeight){
+        constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
         }
@@ -119,7 +119,7 @@ window.addEventListener('load', function () {
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         background.draw(ctx);
-        //background.update();
+        background.update();
         rexChar.draw(ctx);
         rexChar.update(input);
         requestAnimationFrame(animate);
