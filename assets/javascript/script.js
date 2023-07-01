@@ -47,6 +47,7 @@ window.addEventListener('load', function () {
             this.speed = 1; // movement of the sprite(rex)
             this.velocityY = 0;
             this.gravity = 1;
+            this.maxFrame = 2;
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
@@ -55,6 +56,9 @@ window.addEventListener('load', function () {
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(input) {
+            if (this.frameX >= this.maxFrame) this.frameX = 0;
+            else this.frameX++;
+
             // controls for the rex char 
             if (input.keys.indexOf('ArrowRight') > -1) {
                 this.speed = 5;
