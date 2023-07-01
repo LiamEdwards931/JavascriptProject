@@ -4,6 +4,8 @@ window.addEventListener('load', function () {
     const ctx = canvas.getContext('2d');
     canvas.width = 800;
     canvas.height = 720;
+    //Array for spawning multiple enemy characters
+    let enemies = [];
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -48,8 +50,8 @@ window.addEventListener('load', function () {
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
-            context.fillStyle = 'white';
-            context.fillRect(this.x, this.y, this.width, this.height);
+            //context.fillStyle = 'white';
+            //context.fillRect(this.x, this.y, this.width, this.height);
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(input) {
@@ -59,7 +61,7 @@ window.addEventListener('load', function () {
             } else if (input.keys.indexOf('ArrowLeft') > -1) {
                 this.speed = -5;
             } else if (input.keys.indexOf('ArrowUp') > -1 && this.onGround()) {
-                this.velocityY -= 20;
+                this.velocityY -= 30;
             } else {
                 this.speed = 0;
             };
@@ -109,23 +111,30 @@ window.addEventListener('load', function () {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
-            this.x = 0;
-            this.y = 0;
             this.width = 150;
             this.height = 150;
             this.image = document.getElementById('eggenemy');
+            this.x = this.gameWidth;
+            this.y = this.gameHeight - this.height;
             this.frameX = 0;
-            this.frameY = 0;
+            this.maxFrame = 7;
+            this.fps = 20;
+            this.frameTimer = 0;
+            this.frameInterval = 1000 / this.fps;
+            this.speed = 5;
+
         }
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
-            context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
+            context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
-        update() {
-
+        update(deltaTime) {
+            if (this.frameX >= this.maxFrame) this.frameX = 0;
+            else this.frameX++;
+            this.x -= this.speed; //Moves enemies in from the left at the interval of what this.speed is.
         }
     };
-
+    //Meat collectible object
     class Meat {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
@@ -137,24 +146,49 @@ window.addEventListener('load', function () {
             this.image = document.getElementById('meat');
         }
     }
+    /**Pushed new enemies into the array every time eggTimer hits 1000ms and resets it back to 0 to count again when it does.
+     */
+    function Spawns(deltaTime) {
+        if (eggTimer > eggInterval + randomInterval) {
+            enemies.push(new EggEnemy(canvas.width, canvas.height));
+            eggTimer = 0;
+        } else {
+            eggTimer += deltaTime;
+        }
+        enemies.forEach(egg => {
+            egg.draw(ctx);
+            egg.update(deltaTime);
+        });
+
+    }
+    //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
-    const eggEnemy = new EggEnemy();
+    const eggEnemy = new EggEnemy(canvas.width, canvas.height);
     const meat = new Meat();
+
+    //time for when last egg spawn was done.
+    let lastTime = 0;
+    let eggTimer = 0;
+    let eggInterval = 2000;
+    //can add to spawn methods to have random intervals for spawns.
+    let randomInterval = Math.floor(Math.random() * 1000 + 450);
 
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */
-    function animate() {
+    function animate(timeStamp) {
+        const deltaTime = timeStamp - lastTime; // gets the timestamp from built in function on JS that is taken from the repeated 'animate' function.
+        lastTime = timeStamp; //6ms on personal computer.
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         background.draw(ctx);
         background.update();
         rexChar.draw(ctx);
         rexChar.update(input);
-        eggEnemy.draw(ctx);
+        Spawns(deltaTime);
         requestAnimationFrame(animate);
     };
-    animate();
+    animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
 });
 
