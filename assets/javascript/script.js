@@ -16,6 +16,7 @@ window.addEventListener('load', function () {
                     a.key === 'ArrowRight'
                     && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
+                    console.log(a.key);
                 }
             });
             window.addEventListener('keyup', a => {
@@ -30,7 +31,7 @@ window.addEventListener('load', function () {
     }
 
     //Class to create the Player character object with 2 arguments to keep the character within the game. 
-    class Dog {
+    class Rex {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
@@ -103,15 +104,27 @@ window.addEventListener('load', function () {
         }
     }
 
-    class Enemy {
+    class EggEnemy {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
+            this.x = 0;
+            this.y = 0;
+            this.width = 150;
+            this.height = 150;
+            this.image = document.getElementById('eggenemy');
         }
-    }
+        draw(context) {
+            context.drawImage(this.image, this.x, this.y);
+        }
+        update() {
+
+        }
+    };
     const input = new Controls();
-    const rexChar = new Dog(canvas.width, canvas.height);
+    const rexChar = new Rex(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
+    const eggEnemy = new EggEnemy();
 
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
@@ -122,6 +135,7 @@ window.addEventListener('load', function () {
         background.update();
         rexChar.draw(ctx);
         rexChar.update(input);
+        eggEnemy.draw(ctx);
         requestAnimationFrame(animate);
     };
     animate();
