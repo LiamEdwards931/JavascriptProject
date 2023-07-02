@@ -6,6 +6,7 @@ window.addEventListener('load', function () {
     canvas.height = 720;
     //Array for spawning multiple enemy characters
     let enemies = [];
+    let meats = [];
     //variable for the score
     let score = 0;
     //variable for HP
@@ -165,18 +166,24 @@ window.addEventListener('load', function () {
             this.gameHeight = gameHeight;
             this.width = 180;
             this.height = 180;
-            this.x = 0;
-            this.y = 0;
+            this.x = this.gameWidth - 100;
+            this.y = this.gameHeight - this.height + Math.random() * 100 - 500;
             this.image = document.getElementById('meat');
-            this.speed = 5;
+            this.speed = 10;
+            this.markedForRemove = false;
         }
         draw(context) {
-            context.drawImage(this.image, this.x, this.y);
+            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+        }
+        update() {
+            this.x -= this.speed;
+            if (this.x < 0 - this.width) this.markedForRemove = true;// removes meat object from array when it leaves screen
         }
     }
     /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
      */
     function Spawns(deltaTime) {
+        // egg spawns
         if (eggTimer > eggInterval + randomInterval) {
             enemies.push(new EggEnemy(canvas.width, canvas.height));
             console.log(enemies);
@@ -189,7 +196,24 @@ window.addEventListener('load', function () {
             egg.update(deltaTime);
         });
         enemies = enemies.filter(egg => !egg.markedForRemove);
-    }
+    };
+
+
+    //handles the spawn times of the meat object
+    function SpawnMeat(deltaTime) {
+        if (meatTimer > meatInterval + randomInterval) {
+            meats.push(new Meat(canvas.width, canvas.height));
+            console.log(meats);
+            meatTimer = 0;
+        } else {
+            meatTimer += deltaTime;
+        }
+        meats.forEach(meat => {
+            meat.draw(ctx);
+            meat.update();
+        });
+        meats = meats.filter(meat => !meat.markedForRemove);
+    };
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
@@ -197,26 +221,30 @@ window.addEventListener('load', function () {
     const eggEnemy = new EggEnemy(canvas.width, canvas.height);
     const meat = new Meat(canvas.width, canvas.height);
 
-    //time for when last egg spawn was done.
+    //time for when last spawn was done.
     let lastTime = 0;
+    // egg specific times
     let eggTimer = 0;
-    let eggInterval = 2000;
+    let eggInterval = 2000; // adds new enemy every 2000 ms
+    //meat specific times
+    let meatTimer = 0;
+    let meatInterval = 3000;
     //can add to spawn methods to have random intervals for spawns.
-    let randomInterval = Math.floor(Math.random() * 1000 + 450);
+    let randomInterval = Math.random() * 1000 + 500;
 
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */
     function animate(timeStamp) {
-        const deltaTime = timeStamp - lastTime; // gets the timestamp from built in function on JS that is taken from the repeated 'animate' function.
-        lastTime = timeStamp; //6ms on personal computer.
+        const deltaTime = timeStamp - lastTime; // calculated by subtracting time from this loop and the time from the last loop;
+        lastTime = timeStamp; //Calculated automatically by the requestAnimationFrame(animate) loop;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         background.draw(ctx);
         background.update();
         rexChar.draw(ctx);
         rexChar.update(input, deltaTime);
         Spawns(deltaTime);
-        meat.draw(ctx);
+        SpawnMeat(deltaTime);
         requestAnimationFrame(animate);
     };
     animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
