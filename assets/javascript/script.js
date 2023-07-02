@@ -18,7 +18,7 @@ window.addEventListener('load', function () {
                     a.key === 'ArrowRight'
                     && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
-                    console.log(a.key);
+                    console.log(this.keys,a.key);
                 }
             });
             window.addEventListener('keyup', a => {
@@ -44,10 +44,13 @@ window.addEventListener('load', function () {
             this.image = document.getElementById('rex-char');
             this.frameX = 0; //frame of the animation (horizontal)
             this.frameY = 0; // frame of the animation (verticle)
+            this.maxFrame = 2;
+            this.fps = 20;
+            this.frameTimer = 0;
+            this.frameInterval = 1000 / this.fps;
             this.speed = 1; // movement of the sprite(rex)
             this.velocityY = 0;
             this.gravity = 1;
-            this.maxFrame = 2;
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
@@ -55,11 +58,16 @@ window.addEventListener('load', function () {
             //context.fillRect(this.x, this.y, this.width, this.height);
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
-        update(input) {
+        update(input, deltaTime) {
+            //animation for the rex character
+            if(this.frameTimer > this.frameInterval){
             if (this.frameX >= this.maxFrame) this.frameX = 0;
             else this.frameX++;
-
-            // controls for the rex char 
+            this.frameTimer = 0;
+            } else {
+                this.frameTimer += deltaTime
+            };
+          // controls for the rex char 
             if (input.keys.indexOf('ArrowRight') > -1) {
                 this.speed = 5;
             } else if (input.keys.indexOf('ArrowLeft') > -1) {
@@ -88,7 +96,7 @@ window.addEventListener('load', function () {
             return this.y >= this.gameHeight - this.height;
         }
     }
-
+    //class to create the background object.
     class Background {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
@@ -110,7 +118,7 @@ window.addEventListener('load', function () {
             if (this.x < 0 - this.width) this.x = 0;
         }
     }
-    //Class structure for the Egge enemies.
+    //Class structure for the Egg enemies.
     class EggEnemy {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
@@ -121,7 +129,7 @@ window.addEventListener('load', function () {
             this.x = this.gameWidth;
             this.y = this.gameHeight - this.height;
             this.frameX = 0;
-            this.maxFrame = 7;
+            this.maxFrame = 6;
             this.fps = 20;
             this.frameTimer = 0;
             this.frameInterval = 1000 / this.fps;
@@ -133,8 +141,13 @@ window.addEventListener('load', function () {
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y, this.width, this.height);
         }
         update(deltaTime) {
-            if (this.frameX >= this.maxFrame) this.frameX = 0;
-            else this.frameX++;
+            if(this.frameTimer > this.frameInterval){
+                if (this.frameX >= this.maxFrame) this.frameX = 0; //value increased by 1 up to max of 7, this is then multiplied in thre sourceX to continuously swap the position of the spritesheet which animates it.
+                else this.frameX++;
+                this.frameTimer = 0;
+            } else {
+                this.frameTimer += deltaTime;
+            }
             this.x -= this.speed; //Moves enemies in from the left at the interval of what this.speed is.
         }
     };
@@ -150,7 +163,7 @@ window.addEventListener('load', function () {
             this.image = document.getElementById('meat');
         }
     }
-    /**Pushed new enemies into the array every time eggTimer hits 1000ms and resets it back to 0 to count again when it does.
+    /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
      */
     function Spawns(deltaTime) {
         if (eggTimer > eggInterval + randomInterval) {
@@ -189,7 +202,7 @@ window.addEventListener('load', function () {
         background.draw(ctx);
         background.update();
         rexChar.draw(ctx);
-        rexChar.update(input);
+        rexChar.update(input, deltaTime);
         Spawns(deltaTime);
         requestAnimationFrame(animate);
     };
