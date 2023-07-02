@@ -6,6 +6,10 @@ window.addEventListener('load', function () {
     canvas.height = 720;
     //Array for spawning multiple enemy characters
     let enemies = [];
+    //variable for the score
+    let score = 0;
+    //variable for HP
+    let hp = 3;
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -134,6 +138,7 @@ window.addEventListener('load', function () {
             this.frameTimer = 0;
             this.frameInterval = 1000 / this.fps;
             this.speed = 5;
+            this.markedForRemove = false;
 
         }
         draw(context) {
@@ -149,6 +154,8 @@ window.addEventListener('load', function () {
                 this.frameTimer += deltaTime;
             }
             this.x -= this.speed; //Moves enemies in from the left at the interval of what this.speed is.
+            if(this.x < 0 - this.width) this.markedForRemove = true; //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
+               
         }
     };
     //Meat collectible object
@@ -161,6 +168,7 @@ window.addEventListener('load', function () {
             this.width = 180;
             this.height = 180;
             this.image = document.getElementById('meat');
+            
         }
     }
     /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
@@ -168,6 +176,7 @@ window.addEventListener('load', function () {
     function Spawns(deltaTime) {
         if (eggTimer > eggInterval + randomInterval) {
             enemies.push(new EggEnemy(canvas.width, canvas.height));
+            console.log(enemies);
             eggTimer = 0;
         } else {
             eggTimer += deltaTime;
@@ -176,7 +185,7 @@ window.addEventListener('load', function () {
             egg.draw(ctx);
             egg.update(deltaTime);
         });
-
+        enemies = enemies.filter(egg => !egg.markedForRemove);
     }
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
