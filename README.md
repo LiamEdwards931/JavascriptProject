@@ -6,6 +6,7 @@
 - Player Rex character would float back to the left edge of screen after continuous key presses (fixed) - was a result of a missing bracket on the event listener in the If statement for the keydown.
 - Player character wasn't animating correctly (fixed) - was missing a statement to reset frame interval back to 0 after it had stopped counting.
 - Meat was incrementing the score by 20 each time collected (fixed) - was missing a second statement to remove the meat after it had been collected.
+- Meat was being collected without a collision (fixed) - removed the division from the this.x and this.y in the meat collision calculation.
 
 ## Credits
 

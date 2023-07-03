@@ -65,19 +65,15 @@ window.addEventListener('load', function () {
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
-            context.strokeStlye = 'white';
-            context.beginPath();
-            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 4, this.width / 2, 0, Math.PI * 2);
-            context.stroke(); // draws circle around Rex for collision detection
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(input, deltaTime, enemies, meats) {
             //collision detection for meat object.
             meats.forEach(meat => {
                 //Start by imagining there is a right angle triangle between the two circles: the verticle line of the triangle is distance x = meat.x - rex.x(this.x)
-                const dx = (meat.x + meat.width / 2) - (this.x / 2 + this.width / 2);
+                const dx = (meat.x + meat.width / 2) - (this.x + this.width / 2);
                 // distance y the verticle line is distance y = meat.y - rex.y(this.y) 
-                const dy = (meat.y + meat.height / 2) - (this.y / 2 + this.height / 2);
+                const dy = (meat.y + meat.height / 2) - (this.y + this.height / 2);
                 // hypotenuse distance is the square root of distanceX squared + distanceY squared
                 const dh = Math.sqrt(dx * dx + dy * dy);
                 //if statement to check if a collision occured + if it does increment meat score and delete the meat object.
@@ -180,10 +176,6 @@ window.addEventListener('load', function () {
         }
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
-            context.strokeStlye = 'white';
-            context.beginPath();
-            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 2, this.width / 2, 0, Math.PI * 2);
-            context.stroke(); // draws circle around the egg for collision detection
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(deltaTime) {
@@ -217,10 +209,6 @@ window.addEventListener('load', function () {
             this.markedForRemove = false;
         }
         draw(context) {
-            context.strokeStlye = 'white';
-            context.beginPath();
-            context.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
-            context.stroke(); //draws circles around the meat for collision detection
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
         update() {
@@ -291,15 +279,13 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 470, 310);
             context.fillText('You Collected: ', 220, 380);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
-            //white shadow
+            //red Text
             context.fillStyle = 'red';
             context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
             context.fillText('You dodged: ', 222, 312);
             context.fillText('x ' + score + ' Eggs', 472, 312);
             context.fillText('You Collected: ', 222, 382);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
-
-
         }
     };
 
