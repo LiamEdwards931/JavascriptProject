@@ -11,6 +11,8 @@ window.addEventListener('load', function () {
     let score = 0;
     //variable for HP
     let hp = 3;
+    //variable for meat collected
+    let meatCollected = 0;
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -56,14 +58,33 @@ window.addEventListener('load', function () {
             this.speed = 1; // movement of the sprite(rex)
             this.velocityY = 0;
             this.gravity = 1;
+            this.sound = new Audio();
+            this.sound.src = "assets/audio/dinosaur-2-86565.mp3";
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
-            //context.fillStyle = 'white';
-            //context.fillRect(this.x, this.y, this.width, this.height);
+            context.strokeStlye = 'white';
+            context.beginPath();
+            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 4, this.width / 2, 0, Math.PI * 2);
+            context.stroke(); // draws circle around Rex for collision detection
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
-        update(input, deltaTime) {
+        update(input, deltaTime, enemies, meats) {
+            //collision detection - compare the distance between the 2 circles of player + meat object using pythagoras and working out the hypoteneuse.
+            meats.forEach(meat => {
+                //Start by imagining there is a right angle triangle between the two circles: the verticle line of the triangle is distance x = meat.x - rex.x(this.x)
+                const dx = meat.x - this.x;
+                // distance y the verticle line is distance y = meat.y - rex.y(this.y) 
+                const dy = meat.y - this.y;
+                // hypotenuse distance is the square root of distanceX squared + distanceY squared
+                const dh = Math.sqrt(dx * dx + dy * dy);
+                //if statement to check if a collision occured + if it does increment meat score and delete the meat object.
+                if (dh < meat.width / 2 + this.width / 2) {
+                    meatCollected++;
+                    meat.markedForRemove = true;
+                    this.sound.play();
+                };
+            });
             //animation for the rex character
             if (this.frameTimer > this.frameInterval) {
                 if (this.frameX >= this.maxFrame) this.frameX = 0;
@@ -78,7 +99,7 @@ window.addEventListener('load', function () {
             } else if (input.keys.indexOf('ArrowLeft') > -1) {
                 this.speed = -5;
             } else if (input.keys.indexOf('ArrowUp') > -1 && this.onGround()) {
-                this.velocityY -= 30;
+                this.velocityY -= 35;
             } else {
                 this.speed = 0;
             };
@@ -138,12 +159,16 @@ window.addEventListener('load', function () {
             this.fps = 20;
             this.frameTimer = 0;
             this.frameInterval = 1000 / this.fps;
-            this.speed = 5;
+            this.speed = Math.random() * 5 + 5; // speed of egg animations
             this.markedForRemove = false;
 
         }
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
+            context.strokeStlye = 'white';
+            context.beginPath();
+            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 2, this.width / 2, 0, Math.PI * 2);
+            context.stroke(); // draws circle around the egg for collision detection
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(deltaTime) {
@@ -155,7 +180,11 @@ window.addEventListener('load', function () {
                 this.frameTimer += deltaTime;
             }
             this.x -= this.speed; //Moves enemies in from the left at the interval of what this.speed is.
-            if (this.x < 0 - this.width) this.markedForRemove = true; //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
+            if (this.x < 0 - this.width) {
+                this.markedForRemove = true;
+                score++;
+            }
+            //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
 
         }
     };
@@ -164,8 +193,8 @@ window.addEventListener('load', function () {
         constructor(gameWidth, gameHeight) {
             this.gameWidth = gameWidth;
             this.gameHeight = gameHeight;
-            this.width = 180;
-            this.height = 180;
+            this.width = 120;
+            this.height = 120;
             this.x = this.gameWidth - 100;
             this.y = this.gameHeight - this.height + Math.random() * 100 - 500;
             this.image = document.getElementById('meat');
@@ -173,6 +202,10 @@ window.addEventListener('load', function () {
             this.markedForRemove = false;
         }
         draw(context) {
+            context.strokeStlye = 'white';
+            context.beginPath();
+            context.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
+            context.stroke(); //draws circles around the meat for collision detection
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
         }
         update() {
@@ -214,6 +247,27 @@ window.addEventListener('load', function () {
         });
         meats = meats.filter(meat => !meat.markedForRemove);
     };
+    // variables for the meat images for statusText function.
+    let meatImg = document.getElementById('meat');
+    let heartImg = document.getElementById('heart');
+    /**
+     * Displays the HP and Meat collected status.
+     */
+    function statusText(context) {
+        context.font = '25px Cursive';
+        context.drawImage(meatImg, 20, 20, 40, 40);
+        context.fillStyle = 'black';
+        context.fillText('x ' + meatCollected, 70, 40);
+        context.fillStyle = 'white';
+        context.fillText('x ' + meatCollected, 73, 43);
+        context.drawImage(heartImg, 5, 50, 80, 80);
+        context.fillStyle = 'black';
+        context.fillText('x ' + hp, 70, 90);
+        context.fillStyle = 'white';
+        context.fillText('x ' + hp, 73, 93);
+
+    };
+
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
@@ -225,10 +279,10 @@ window.addEventListener('load', function () {
     let lastTime = 0;
     // egg specific times
     let eggTimer = 0;
-    let eggInterval = 2000; // adds new enemy every 2000 ms
+    let eggInterval = 1000; // adds new enemy every 2000 ms
     //meat specific times
     let meatTimer = 0;
-    let meatInterval = 3000;
+    let meatInterval = Math.random() * 2000 + 1000;
     //can add to spawn methods to have random intervals for spawns.
     let randomInterval = Math.random() * 1000 + 500;
 
@@ -242,9 +296,10 @@ window.addEventListener('load', function () {
         background.draw(ctx);
         background.update();
         rexChar.draw(ctx);
-        rexChar.update(input, deltaTime);
+        rexChar.update(input, deltaTime, enemies, meats);
         Spawns(deltaTime);
         SpawnMeat(deltaTime);
+        statusText(ctx);
         requestAnimationFrame(animate);
     };
     animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.

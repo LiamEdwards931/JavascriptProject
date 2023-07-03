@@ -20,6 +20,7 @@
 #enemy-1,
 #background,
 #eggenemy,
-#meat {
+#meat,
+#heart {
     display: none;
 }
