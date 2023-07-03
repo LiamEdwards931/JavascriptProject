@@ -272,20 +272,33 @@ window.addEventListener('load', function () {
     function statusText(context) {
         context.font = '25px Cursive';
         context.drawImage(meatImg, 20, 20, 40, 40);
-        context.fillStyle = 'black';
-        context.fillText('x ' + meatCollected, 70, 40);
-        context.fillStyle = 'white';
-        context.fillText('x ' + meatCollected, 73, 43);
         context.drawImage(heartImg, 5, 50, 80, 80);
         context.fillStyle = 'black';
+        context.fillText('x ' + meatCollected, 70, 40);
         context.fillText('x ' + hp, 70, 90);
+        //white shadow
         context.fillStyle = 'white';
+        context.fillText('x ' + meatCollected, 73, 43);
         context.fillText('x ' + hp, 73, 93);
         if (gameOver) {
+            canvas.textAlign = "center";
+            context.drawImage(angryEgg, 390, 260, 80, 80);
+            context.drawImage(meatImg, 390, 340, 80, 80);
             context.fillStyle = 'black';
             context.fillText('Game Over, You Ran Out Of Lives!', 200, 260);
-            context.fillStyle = 'white';
-            context.fillText('Game Over, You Ran Out Of Lives!', 203, 263);
+            context.fillText('You dodged: ', 220, 310);
+            context.fillText('x ' + score + ' Eggs', 470, 310);
+            context.fillText('You Collected: ', 220, 380);
+            context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
+            //white shadow
+            context.fillStyle = 'red';
+            context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
+            context.fillText('You dodged: ', 222, 312);
+            context.fillText('x ' + score + ' Eggs', 472, 312);
+            context.fillText('You Collected: ', 222, 382);
+            context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
+
+
         }
     };
 
