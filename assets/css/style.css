@@ -21,6 +21,7 @@
 #background,
 #eggenemy,
 #meat,
-#heart {
+#heart,
+#angry-egg {
     display: none;
 }

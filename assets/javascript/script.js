@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
     let hp = 3;
     //variable for meat collected
     let meatCollected = 0;
+    //gameOver variable
+    let gameOver = false;
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -92,7 +94,10 @@ window.addEventListener('load', function () {
                 if (dh < enemy.width / 2 + this.width / 2) {
                     hp--;
                     enemy.markedForRemove = true;
-                }
+                };
+                if (hp === 0) {
+                    gameOver = true;
+                };
             });
             //animation for the rex character
             if (this.frameTimer > this.frameInterval) {
@@ -259,8 +264,10 @@ window.addEventListener('load', function () {
     // variables for the meat images for statusText function.
     let meatImg = document.getElementById('meat');
     let heartImg = document.getElementById('heart');
+    let angryEgg = document.getElementById('angry-egg');
     /**
-     * Displays the HP and Meat collected status.
+     * Displays the HP and Meat collected status. also displays message when the game ends.
+     * the text is written twice to create a shadow effect.
      */
     function statusText(context) {
         context.font = '25px Cursive';
@@ -274,7 +281,12 @@ window.addEventListener('load', function () {
         context.fillText('x ' + hp, 70, 90);
         context.fillStyle = 'white';
         context.fillText('x ' + hp, 73, 93);
-
+        if (gameOver) {
+            context.fillStyle = 'black';
+            context.fillText('Game Over, You Ran Out Of Lives!', 200, 260);
+            context.fillStyle = 'white';
+            context.fillText('Game Over, You Ran Out Of Lives!', 203, 263);
+        }
     };
 
     //Adds the variables to the different assets of the game so they can be called in the animate function.
@@ -309,7 +321,7 @@ window.addEventListener('load', function () {
         Spawns(deltaTime);
         SpawnMeat(deltaTime);
         statusText(ctx);
-        requestAnimationFrame(animate);
+        if (!gameOver) requestAnimationFrame(animate);
     };
     animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
 });
