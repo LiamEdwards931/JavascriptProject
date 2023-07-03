@@ -1,5 +1,16 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 ## Bugs
-- Player Rex character would float back to the left edge of screen after continuous key presses (fixed) - was a result of a missing bracket on the event listener IF for the keydown.
+
+- Array for the keys wasn't deleting the key after input (fixed) - There was a typo on splice method and was spelt 'spilce'
+- Player Rex character would float back to the left edge of screen after continuous key presses (fixed) - was a result of a missing bracket on the event listener in the If statement for the keydown.
 - Player character wasn't animating correctly (fixed) - was missing a statement to reset frame interval back to 0 after it had stopped counting.
+- Meat was incrementing the score by 20 each time collected (fixed) - was missing a second statement to remove the meat after it had been collected.
+
+## Credits
+
+- T-rex spritesheet was taken from [pngkey](https://www.pngkey.com/download/u2e6o0o0o0w7w7a9_dinosaur-trex-dino-sprite-sheet/)
+- Egg enemy characyer was taken from [bevoulin](https://bevouliin.com/category/game-asset/game-characters/page/3/)
+- Audio for collecting the meat was taken from [pixabay](https://pixabay.com/sound-effects/search/t-rex/)
+- The meat image was taken from [superautopets](https://superautopets.fandom.com/wiki/Meat_Bone)
+- the heart image was taken from [etsy](https://etsy.com)
