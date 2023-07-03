@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(input, deltaTime, enemies, meats) {
-            //collision detection - compare the distance between the 2 circles of player + meat object using pythagoras and working out the hypoteneuse.
+            //collision detection for meat object.
             meats.forEach(meat => {
                 //Start by imagining there is a right angle triangle between the two circles: the verticle line of the triangle is distance x = meat.x - rex.x(this.x)
                 const dx = meat.x - this.x;
@@ -84,6 +84,15 @@ window.addEventListener('load', function () {
                     meat.markedForRemove = true;
                     this.sound.play();
                 };
+            });
+            enemies.forEach(enemy => {
+                const dx = enemy.x - this.x;
+                const dy = enemy.y - this.y;
+                const dh = Math.sqrt(dx * dx + dy * dy);
+                if (dh < enemy.width / 2 + this.width / 2) {
+                    hp--;
+                    enemy.markedForRemove = true;
+                }
             });
             //animation for the rex character
             if (this.frameTimer > this.frameInterval) {
