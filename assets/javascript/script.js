@@ -20,6 +20,8 @@ window.addEventListener('load', function () {
     class Controls {
         constructor() {
             this.keys = [];
+            this.touchY = '';
+            this.touchThreshhold = 30; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
             window.addEventListener('keydown', a => {
                 if ((a.key === 'ArrowDown' ||
                     a.key === 'ArrowUp' ||
@@ -37,15 +39,19 @@ window.addEventListener('load', function () {
                     this.keys.splice(this.keys.indexOf(a.key), 1);
                 }
             });
-            //mobile controls
+            //Mobile controls - console.log(a) - Inspect and get value of changeTouches, index 0, page Y.
             window.addEventListener('touchstart', a => {
-                console.log('start');
+                console.log(a.changedTouches[0].pageY);
+                this.touchY = a.changedTouches[0].pageY;
             });
             window.addEventListener('touchmove', a => {
-                console.log('moving');
+                console.log(a.changedTouches[0].pageY);
+                const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance between touch start and touch end.
+                if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipe up' === -1)) this.keys.push('swipe Up'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
+                else if (swipeDist > this.touchThreshold && this.keys.indexOf('swipe down' === -1)) this.keys.push('swipe down'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
             });
             window.addEventListener('touchend', a => {
-                console.log('end');
+                console.log(a.changedTouches[0].pageY);
             });
         }
     };
