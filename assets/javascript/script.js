@@ -41,17 +41,17 @@ window.addEventListener('load', function () {
             });
             //Mobile controls - console.log(a) - Inspect and get value of changeTouches, index 0, page Y.
             window.addEventListener('touchstart', a => {
-                console.log(a.changedTouches[0].pageY);
                 this.touchY = a.changedTouches[0].pageY;
             });
             window.addEventListener('touchmove', a => {
-                console.log(a.changedTouches[0].pageY);
                 const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance between touch start and touch end.
-                if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipe up' === -1)) this.keys.push('swipe Up'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
-                else if (swipeDist > this.touchThreshold && this.keys.indexOf('swipe down' === -1)) this.keys.push('swipe down'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
+                if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) this.keys.push('swipeUp'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
+                else if (swipeDist > this.touchThreshhold && this.keys.indexOf('swipeDown') === -1) this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
             });
             window.addEventListener('touchend', a => {
-                console.log(a.changedTouches[0].pageY);
+                console.log(this.keys);
+                this.keys.splice(this.keys.indexOf('swipeUp'),1); //removes the swipe from array after touchend
+                this.keys.splice(this.keys.indexOf('swipeDown'), 1);
             });
         }
     };
