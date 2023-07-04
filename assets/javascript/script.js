@@ -73,7 +73,7 @@ window.addEventListener('load', function () {
                 //Start by imagining there is a right angle triangle between the two circles: the verticle line of the triangle is distance x = meat.x - rex.x(this.x)
                 const dx = (meat.x + meat.width / 2) - (this.x + this.width / 2);
                 // distance y the verticle line is distance y = meat.y - rex.y(this.y) 
-                const dy = (meat.y + meat.height / 2) - (this.y + this.height / 2);
+                const dy = (meat.y + meat.height / 2) - (this.y - 60 + this.height / 2);
                 // hypotenuse distance is the square root of distanceX squared + distanceY squared
                 const dh = Math.sqrt(dx * dx + dy * dy);
                 //if statement to check if a collision occured + if it does increment meat score and delete the meat object.
@@ -86,7 +86,7 @@ window.addEventListener('load', function () {
             enemies.forEach(enemy => {
                 //calculates the width of characters into the collision
                 const dx = (enemy.x + enemy.width / 2) - (this.x + this.width / 2);
-                const dy = (enemy.y + enemy.height / 2) - (this.y + this.height / 2);
+                const dy = (enemy.y + enemy.height / 2) - (this.y - 60 + this.height / 2);
                 const dh = Math.sqrt(dx * dx + dy * dy);
                 if (dh < enemy.width / 2 + this.width / 2) {
                     hp--;
