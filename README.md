@@ -8,6 +8,7 @@
 - Meat was incrementing the score by 20 each time collected (fixed) - was missing a second statement to remove the meat after it had been collected.
 - Meat was being collected without a collision (fixed) - removed the division from the this.x and this.y in the meat collision calculation.
 - the Y axis position of the rex wasn't being calculated correctly in the collision detection (fixed) - adjusted the y axis formula to correctly mark where the rex was sitting on the canvas.
+- enter key wasn't working to reset the game on gameOver (fixed) - set the wrong variable for rexchar in the gameOver function, changed it back to normal to make it work.
 
 ## Credits
 

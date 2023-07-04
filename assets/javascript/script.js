@@ -27,7 +27,6 @@ window.addEventListener('load', function () {
                     a.key === 'ArrowRight')
                     && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
-                    console.log(this.keys, a.key);
                 } else if (a.key === 'Enter' && gameOver) restartGame();
             });
             window.addEventListener('keyup', a => {
@@ -40,13 +39,13 @@ window.addEventListener('load', function () {
             });
             //mobile controls
             window.addEventListener('touchstart', a => {
-
+                console.log('start');
             });
             window.addEventListener('touchmove', a => {
-
+                console.log('moving');
             });
             window.addEventListener('touchend', a => {
-
+                console.log('end');
             });
         }
     };
