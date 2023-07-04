@@ -2,7 +2,7 @@
 window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
-    canvas.width = 800;
+    canvas.width = 1000;
     canvas.height = 720;
     //Array for spawning multiple enemy characters
     let enemies = [];
@@ -28,7 +28,7 @@ window.addEventListener('load', function () {
                     && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
                     console.log(this.keys, a.key);
-                }
+                } else if (a.key === 'Enter' && gameOver) restartGame();
             });
             window.addEventListener('keyup', a => {
                 if (a.key === 'ArrowDown' ||
@@ -63,6 +63,10 @@ window.addEventListener('load', function () {
             this.sound = new Audio();
             this.sound.src = "assets/audio/dinosaur-2-86565.mp3";
         }
+        restart() {
+            this.x = 0;
+            this.y = this.gameHeight - 60 - this.height;
+        }
         /**parameters for the rex char to be drawn */
         draw(context) {
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
@@ -86,7 +90,7 @@ window.addEventListener('load', function () {
             enemies.forEach(enemy => {
                 //calculates the width of characters into the collision
                 const dx = (enemy.x + enemy.width / 2) - (this.x + this.width / 2);
-                const dy = (enemy.y + enemy.height / 2) - (this.y - 60 + this.height / 2);
+                const dy = (enemy.y - 60 + enemy.height / 2) - (this.y - 60 + this.height / 2);
                 const dh = Math.sqrt(dx * dx + dy * dy);
                 if (dh < enemy.width / 2 + this.width / 2) {
                     hp--;
@@ -144,7 +148,7 @@ window.addEventListener('load', function () {
             this.width = 1800;
             this.height = 720;
             this.speed = 5;
-        }
+        };
         draw(context) {
             //draws 2 images for a never ending background - this is called in the update method in animate. 
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
@@ -153,8 +157,11 @@ window.addEventListener('load', function () {
         update() {
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.x = 0;
+        };
+        restart() {
+            this.x = 0;
         }
-    }
+    };
     //Class structure for the Egg enemies.
     class EggEnemy {
         constructor(gameWidth, gameHeight) {
@@ -172,8 +179,7 @@ window.addEventListener('load', function () {
             this.frameInterval = 1000 / this.fps;
             this.speed = Math.random() * 5 + 5; // speed of egg animations
             this.markedForRemove = false;
-
-        }
+        };
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
@@ -207,15 +213,15 @@ window.addEventListener('load', function () {
             this.image = document.getElementById('meat');
             this.speed = 10;
             this.markedForRemove = false;
-        }
+        };
         draw(context) {
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
-        }
+        };
         update() {
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.markedForRemove = true;// removes meat object from array when it leaves screen
-        }
-    }
+        };
+    };
     /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
      */
     function Spawns(deltaTime) {
@@ -250,6 +256,7 @@ window.addEventListener('load', function () {
         });
         meats = meats.filter(meat => !meat.markedForRemove);
     };
+
     // variables for the meat images for statusText function.
     let meatImg = document.getElementById('meat');
     let heartImg = document.getElementById('heart');
@@ -288,7 +295,20 @@ window.addEventListener('load', function () {
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
         }
     };
-
+    /**
+     * Restarts the game.
+     */
+    function restartGame() {
+        gameOver = false;
+        rexChar.restart();
+        background.restart();
+        enemies = [];
+        meats = [];
+        hp = 3;
+        score = 0;
+        meatCollected = 0;
+        animate(0);
+    };
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
