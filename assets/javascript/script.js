@@ -38,8 +38,18 @@ window.addEventListener('load', function () {
                     this.keys.splice(this.keys.indexOf(a.key), 1);
                 }
             });
+            //mobile controls
+            window.addEventListener('touchstart', a => {
+
+            });
+            window.addEventListener('touchmove', a => {
+
+            });
+            window.addEventListener('touchend', a => {
+
+            });
         }
-    }
+    };
 
     //Class to create the Player character object with 2 arguments to keep the character within the game. 
     class Rex {
@@ -194,11 +204,12 @@ window.addEventListener('load', function () {
             }
             this.x -= this.speed; //Moves enemies in from the left at the interval of what this.speed is.
             if (this.x < 0 - this.width) {
-                this.markedForRemove = true;
+                this.markedForRemove = true; //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
                 score++;
             }
-            //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
-
+        }
+        pause() {
+            this.speed = 0;
         }
     };
     //Meat collectible object
@@ -221,6 +232,9 @@ window.addEventListener('load', function () {
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.markedForRemove = true;// removes meat object from array when it leaves screen
         };
+        pause() {
+            this.speed = 0;
+        }
     };
     /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
      */
@@ -286,6 +300,7 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 470, 310);
             context.fillText('You Collected: ', 220, 380);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
+            context.fillText('Press Enter to restart', 220, 450);
             //red Text
             context.fillStyle = 'red';
             context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
@@ -293,6 +308,7 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 472, 312);
             context.fillText('You Collected: ', 222, 382);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
+            context.fillText('Press Enter to restart', 222, 452);
         }
     };
     /**
@@ -309,6 +325,7 @@ window.addEventListener('load', function () {
         meatCollected = 0;
         animate(0);
     };
+
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
