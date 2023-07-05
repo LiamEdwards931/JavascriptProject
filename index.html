@@ -11,16 +11,20 @@
 
 <body>
     <canvas id="canvas1"></canvas>
-    <img id="rex-char" src="assets/images/spritesheets/T-rex walk.png">
-    <img id="background" src="assets/images/nightbackground.jpg">
-    <img id="eggenemy" src="assets/images/spritesheets/eggenemy.png">
-    <img id="meat" src="assets/images/Meat.png">
-    <img id="heart" src="assets/images/heart.png">
-    <img id="angry-egg" src="assets/images/angryegg.png">
-    <!-- Full screen button-->
-    <button id="fullscreen" type="submit">Fullscreen</button>
-    <!-- Mute Button-->
-    <button id="mute" type="submit">Mute</button>
+    <!--Images for the canvas (Invisible on CSS are drawn with Javascript)-->
+    <img id="rex-char" src="assets/images/spritesheets/T-rex walk.png" alt="t-rex spritesheet">
+    <img id="background" src="assets/images/nightbackground.jpg" alt=" Star Background Image">
+    <img id="eggenemy" src="assets/images/spritesheets/eggenemy.png" alt="Egg enemy sprite sheet">
+    <img id="meat" src="assets/images/Meat.png" alt="Cartoon meat">
+    <img id="heart" src="assets/images/heart.png" alt="heart cartoon">
+    <img id="angry-egg" src="assets/images/angryegg.png" alt="single egg image">
+    <ul id="buttons">
+        <!-- Full screen button-->
+        <li><button id="fullscreen" type="submit">Fullscreen</button></li>
+        <!-- Mute Button-->
+        <li><button id="mute" type="submit">Mute</button></li>
+    </ul>
+
 
 
     <script src="assets/javascript/script.js"></script>

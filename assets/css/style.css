@@ -4,6 +4,7 @@
     padding: 0;
     background: black;
     box-sizing: border-box;
+    margin-top: 10px;
 }
 
 
@@ -27,24 +28,31 @@
     display: none;
 }
 
-#fullscreen {
+
+#buttons {
     position: absolute;
-    top: 10px;
     left: 50%;
-    font-size: 20px;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    background: white;
-    cursor: pointer;
+    top: 20px;
+    transform: translate(-50%, -5%);
 }
 
-#mute {
-    position: absolute;
-    top: 10px;
-    left: 40%;
-    font-size: 20px;
+#buttons li {
+    list-style-type: none;
+    display: block;
+    float: left;
     transform: translate(-50%, -50%);
-    padding: 10px;
+}
+
+#mute,
+#fullscreen {
+    font-size: 20px;
+
+    text-align: center;
     background: white;
     cursor: pointer;
+    width: 100px;
+    height: 70px;
+    border-radius: 50%;
+    border: red 2px solid;
+    margin-left: 10px;
 }
