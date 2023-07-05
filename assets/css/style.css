@@ -32,8 +32,9 @@
 #buttons {
     position: absolute;
     left: 50%;
-    top: 20px;
+    bottom: 20px;
     transform: translate(-50%, -5%);
+
 }
 
 #buttons li {
@@ -46,13 +47,17 @@
 #mute,
 #fullscreen {
     font-size: 20px;
-
     text-align: center;
     background: white;
     cursor: pointer;
-    width: 100px;
-    height: 70px;
-    border-radius: 50%;
     border: red 2px solid;
     margin-left: 10px;
+}
+
+@media screen and (max-height:414px) {
+
+    #mute,
+    #fullscreen {
+        display: none;
+    }
 }
