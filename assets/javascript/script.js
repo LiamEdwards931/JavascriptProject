@@ -2,7 +2,7 @@
 window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
-    canvas.width = 1000;
+    canvas.width = 1200;
     canvas.height = 720;
     //Array for spawning multiple enemy characters
     let enemies = [];
@@ -15,6 +15,8 @@ window.addEventListener('load', function () {
     let meatCollected = 0;
     //gameOver variable
     let gameOver = false;
+    //fullsccreen button
+    const fullScreen = document.getElementById('fullscreen');
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -29,7 +31,9 @@ window.addEventListener('load', function () {
                     a.key === 'ArrowRight')
                     && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
-                } else if (a.key === 'Enter' && gameOver) restartGame();
+                } else if (a.key === 'Enter' && gameOver) {
+                    restartGame();
+                }
             });
             window.addEventListener('keyup', a => {
                 if (a.key === 'ArrowDown' ||
@@ -45,12 +49,16 @@ window.addEventListener('load', function () {
             });
             window.addEventListener('touchmove', a => {
                 const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance between touch start and touch end.
-                if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) this.keys.push('swipeUp'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
-                else if (swipeDist > this.touchThreshhold && this.keys.indexOf('swipeDown') === -1) this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
+                if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) {
+                    this.keys.push('swipeUp'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
+                } else if (swipeDist > this.touchThreshhold && this.keys.indexOf('swipeDown') === -1) {
+                    this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
+                    if (gameOver) restartGame();
+                }
             });
+
             window.addEventListener('touchend', a => {
-                console.log(this.keys);
-                this.keys.splice(this.keys.indexOf('swipeUp'),1); //removes the swipe from array after touchend
+                this.keys.splice(this.keys.indexOf('swipeUp'), 1); //removes the swipe from array after touchend
                 this.keys.splice(this.keys.indexOf('swipeDown'), 1);
             });
         }
@@ -84,19 +92,24 @@ window.addEventListener('load', function () {
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
+            context.linewidth = 5;
+            context.strokeStyle = 'white';
+            context.beginPath();
+            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 2, this.width / 3, 0, Math.PI * 2);
+            context.stroke();
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(input, deltaTime, enemies, meats) {
             //collision detection for meat object.
             meats.forEach(meat => {
                 //Start by imagining there is a right angle triangle between the two circles: the verticle line of the triangle is distance x = meat.x - rex.x(this.x)
-                const dx = (meat.x + meat.width / 2) - (this.x + this.width / 2);
+                const dx = (meat.x + meat.width / 2) - (this.x + this.width / 3);
                 // distance y the verticle line is distance y = meat.y - rex.y(this.y) 
                 const dy = (meat.y + meat.height / 2) - (this.y - 60 + this.height / 2);
                 // hypotenuse distance is the square root of distanceX squared + distanceY squared
                 const dh = Math.sqrt(dx * dx + dy * dy);
                 //if statement to check if a collision occured + if it does increment meat score and delete the meat object.
-                if (dh < meat.width / 2 + this.width / 2) {
+                if (dh < meat.width / 2 + this.width / 3) {
                     meatCollected++;
                     meat.markedForRemove = true;
                     this.sound.play();
@@ -104,10 +117,10 @@ window.addEventListener('load', function () {
             });
             enemies.forEach(enemy => {
                 //calculates the width of characters into the collision
-                const dx = (enemy.x + enemy.width / 2) - (this.x + this.width / 2);
+                const dx = (enemy.x + enemy.width / 3) - (this.x + this.width / 3);
                 const dy = (enemy.y - 60 + enemy.height / 2) - (this.y - 60 + this.height / 2);
-                const dh = Math.sqrt(dx * dx + dy * dy);
-                if (dh < enemy.width / 2 + this.width / 2) {
+                const dh = Math.sqrt(dx * dx + dy * dy); // first compares the width and height of the circles for a collison
+                if (dh < enemy.width / 3 + this.width / 3) { // then checks the radius of the circles for a collision
                     hp--;
                     enemy.markedForRemove = true;
                 };
@@ -128,7 +141,7 @@ window.addEventListener('load', function () {
                 this.speed = 5;
             } else if (input.keys.indexOf('ArrowLeft') > -1) {
                 this.speed = -5;
-            } else if (input.keys.indexOf('ArrowUp') > -1 && this.onGround()) {
+            } else if ((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipeUp') > -1) && this.onGround()) {
                 this.velocityY -= 35;
             } else {
                 this.speed = 0;
@@ -197,6 +210,11 @@ window.addEventListener('load', function () {
         };
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
+            context.linewidth = 5;
+            context.strokeStyle = 'white';
+            context.beginPath();
+            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 2, this.width / 3, 0, Math.PI * 2);
+            context.stroke();
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(deltaTime) {
@@ -247,7 +265,6 @@ window.addEventListener('load', function () {
         // egg spawns
         if (eggTimer > eggInterval + randomInterval) {
             enemies.push(new EggEnemy(canvas.width, canvas.height));
-            console.log(enemies);
             eggTimer = 0;
         } else {
             eggTimer += deltaTime;
@@ -264,7 +281,6 @@ window.addEventListener('load', function () {
     function SpawnMeat(deltaTime) {
         if (meatTimer > meatInterval + randomInterval) {
             meats.push(new Meat(canvas.width, canvas.height));
-            console.log(meats);
             meatTimer = 0;
         } else {
             meatTimer += deltaTime;
@@ -305,7 +321,7 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 470, 310);
             context.fillText('You Collected: ', 220, 380);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
-            context.fillText('Press Enter to restart', 220, 450);
+            context.fillText('Press Enter Or Swipe Down to restart', 220, 450);
             //red Text
             context.fillStyle = 'red';
             context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
@@ -313,7 +329,7 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 472, 312);
             context.fillText('You Collected: ', 222, 382);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
-            context.fillText('Press Enter to restart', 222, 452);
+            context.fillText('Press Enter Or Swipe Down to restart', 222, 452);
         }
     };
     /**
@@ -330,6 +346,21 @@ window.addEventListener('load', function () {
         meatCollected = 0;
         animate(0);
     };
+
+    /**
+     * Toggles fullscreen on canvas.
+     */
+    function toggleFullScreen() {
+        console.log(document.fullscreenElement);
+        if (!document.fullscreenElement) { // requests the fullscreenElement and returns an error if it cannot connect. 
+            canvas.requestFullscreen().catch(err => { //.catch is follow up code on the requestFullScreen to ensure that the game can be broswed in fullscreen
+                alert(`There was an error making the game FullScreen: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+    fullScreen.addEventListener('click', toggleFullScreen);
 
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
