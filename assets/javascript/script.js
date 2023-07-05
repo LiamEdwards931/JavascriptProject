@@ -2,7 +2,7 @@
 window.addEventListener('load', function () {
     const canvas = document.getElementById('canvas1');
     const ctx = canvas.getContext('2d');
-    canvas.width = 1200;
+    canvas.width = 1000;
     canvas.height = 720;
     //Array for spawning multiple enemy characters
     let enemies = [];
@@ -12,7 +12,7 @@ window.addEventListener('load', function () {
     //variable for HP
     let hp = 3;
     //variable for meat collected
-    let meatCollected = 9;
+    let meatCollected = 0;
     //gameOver variable
     let gameOver = false;
     //fullsccreen button
@@ -122,6 +122,13 @@ window.addEventListener('load', function () {
                 if (hp === 0) {
                     gameOver = true;
                 };
+                if (meatCollected >= 15) {
+                    enemy.speed = 12;
+                } else if (meatCollected >= 30) {
+                    enemy.speed = 14;
+                } else if (meatCollected >= 45) {
+                    enemy.speed = 16;
+                }
             });
             //animation for the rex character
             if (this.frameTimer > this.frameInterval) {
@@ -220,12 +227,6 @@ window.addEventListener('load', function () {
                 this.markedForRemove = true; //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
                 score++;
             };
-            if (meatCollected >= 10) {
-                this.speed = Math.random() * 10 + 5; // Increases speed of Eggs when Meat hits 10
-            } 
-        }
-        pause() {
-            this.speed = 0;
         }
     };
     //Meat collectible object
@@ -248,9 +249,6 @@ window.addEventListener('load', function () {
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.markedForRemove = true;// removes meat object from array when it leaves screen
         };
-        pause() {
-            this.speed = 0;
-        }
     };
     /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
      */
@@ -367,7 +365,7 @@ window.addEventListener('load', function () {
     let lastTime = 0;
     // egg specific times
     let eggTimer = 0;
-    let eggInterval = 1000; // adds new enemy every 2000 ms
+    let eggInterval = Math.random() * 10 + 100; // adds new enemy every 1000 ms
     //meat specific times
     let meatTimer = 0;
     let meatInterval = Math.random() * 2000 + 1000;
