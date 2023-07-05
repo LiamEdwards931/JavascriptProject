@@ -12,7 +12,7 @@ window.addEventListener('load', function () {
     //variable for HP
     let hp = 3;
     //variable for meat collected
-    let meatCollected = 0;
+    let meatCollected = 9;
     //gameOver variable
     let gameOver = false;
     //fullsccreen button
@@ -92,11 +92,6 @@ window.addEventListener('load', function () {
         }
         /**parameters for the rex char to be drawn */
         draw(context) {
-            context.linewidth = 5;
-            context.strokeStyle = 'white';
-            context.beginPath();
-            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 2, this.width / 3, 0, Math.PI * 2);
-            context.stroke();
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(input, deltaTime, enemies, meats) {
@@ -210,11 +205,6 @@ window.addEventListener('load', function () {
         };
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
-            context.linewidth = 5;
-            context.strokeStyle = 'white';
-            context.beginPath();
-            context.arc(this.x + this.width / 2, this.y - 60 + this.height / 2, this.width / 3, 0, Math.PI * 2);
-            context.stroke();
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
         }
         update(deltaTime) {
@@ -229,7 +219,10 @@ window.addEventListener('load', function () {
             if (this.x < 0 - this.width) {
                 this.markedForRemove = true; //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
                 score++;
-            }
+            };
+            if (meatCollected >= 10) {
+                this.speed = Math.random() * 10 + 5; // Increases speed of Eggs when Meat hits 10
+            } 
         }
         pause() {
             this.speed = 0;
@@ -360,6 +353,7 @@ window.addEventListener('load', function () {
             document.exitFullscreen();
         }
     }
+    //Event listener for the fullScreenButton
     fullScreen.addEventListener('click', toggleFullScreen);
 
     //Adds the variables to the different assets of the game so they can be called in the animate function.
