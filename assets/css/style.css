@@ -37,3 +37,14 @@
     background: white;
     cursor: pointer;
 }
+
+#mute {
+    position: absolute;
+    top: 10px;
+    left: 40%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    background: white;
+    cursor: pointer;
+}

@@ -17,6 +17,12 @@ window.addEventListener('load', function () {
     let gameOver = false;
     //fullsccreen button
     const fullScreen = document.getElementById('fullscreen');
+    //mute button
+    const muteButton = document.getElementById('mute');
+    let dinoSfx = new Audio("assets/audio/dinosaur-2-86565.mp3");
+
+
+
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -83,8 +89,8 @@ window.addEventListener('load', function () {
             this.speed = 1; // movement of the sprite(rex)
             this.velocityY = 0;
             this.gravity = 1;
-            this.sound = new Audio();
-            this.sound.src = "assets/audio/dinosaur-2-86565.mp3";
+            this.sound = dinoSfx;
+
         }
         restart() {
             this.x = 0;
@@ -354,6 +360,17 @@ window.addEventListener('load', function () {
     //Event listener for the fullScreenButton
     fullScreen.addEventListener('click', toggleFullScreen);
 
+    /**Toggles Mute */
+    function Mute() {
+        if (dinoSfx.muted) {
+            dinoSfx.muted = false;
+            muteButton.innerHTML = "mute";
+        } else {
+            dinoSfx.muted = true;
+            muteButton.innerHTML = "unmute";
+        };
+    }
+    muteButton.addEventListener('click', Mute);
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
