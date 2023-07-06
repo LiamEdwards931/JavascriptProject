@@ -25,6 +25,22 @@
     touch-action: none;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+    background: rgb(10, 0, 0, 0);
+}
+
+a::active {
+    color: white;
+    text-decoration: none;
+}
+
+a::after {
+    color: white;
+    text-decoration: none;
+}
+
 #start-screen h1 {
     position: fixed;
     top: 15%;
@@ -65,11 +81,11 @@
     background: rgb(10, 0, 0, 0.5);
 }
 
-#start-screen h2{
-    position:absolute;
-    bottom:0;
-    left:50%;
-    transform: tr
+#start-screen h2 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /*Canvas Style*/
