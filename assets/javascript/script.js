@@ -33,6 +33,7 @@ window.addEventListener('load', function () {
         constructor() {
             this.keys = [];
             this.touchY = '';
+            this.touchX = '';
             this.touchThreshhold = 30; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
             window.addEventListener('keydown', a => {
                 if ((a.key === 'ArrowDown' ||
@@ -56,20 +57,29 @@ window.addEventListener('load', function () {
             //Mobile controls - console.log(a) - Inspect and get value of changeTouches, index 0, page Y.
             window.addEventListener('touchstart', a => {
                 this.touchY = a.changedTouches[0].pageY;
+                this.touchX = a.changedTouches[0].pageX;
             });
             window.addEventListener('touchmove', a => {
-                const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance between touch start and touch end.
+                const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance of Y touch start and touch end.
                 if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) {
                     this.keys.push('swipeUp'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
                 } else if (swipeDist > this.touchThreshhold && this.keys.indexOf('swipeDown') === -1) {
                     this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
-                    if (gameOver) restartGame();
+                    if (gameOver) restartGame(); // resets game on gameOver by swiping down.
+                }
+                const swipeDistance = a.changedTouches[0].pageX - this.touchX; // calculates distance of X touch start and end
+                if (swipeDistance < -this.touchThreshhold && this.keys.indexOf('swipeLeft') === -1) {
+                    this.keys.push('swipeLeft');
+                } else if (swipeDistance > this.touchThreshhold && this.keys.indexOf('swipeRight') === -1) {
+                    this.keys.push('swipeRight');
                 }
             });
 
             window.addEventListener('touchend', a => {
                 this.keys.splice(this.keys.indexOf('swipeUp'), 1); //removes the swipe from array after touchend
                 this.keys.splice(this.keys.indexOf('swipeDown'), 1);
+                this.keys.splice(this.keys.indexOf('swipeRight'), 1);
+                this.keys.splice(this.keys.indexOf('swipeLeft'), 1);
             });
         }
     };
