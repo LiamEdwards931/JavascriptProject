@@ -5,23 +5,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript Game</title>
+    <title>Rex-Dash</title>
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <canvas id="canvas1"></canvas>
-
-    <!--Images for the canvas (Invisible on CSS are drawn with Javascript)-->
+    <!--Images for the canvas (Invisible on html as they are drawn with Javascript on the canvas)-->
     <img id="rex-char" src="assets/images/spritesheets/T-rex walk.png" alt="t-rex spritesheet">
     <img id="background" src="assets/images/nightbackground.jpg" alt=" Star Background Image">
     <img id="eggenemy" src="assets/images/spritesheets/eggenemy.png" alt="Egg enemy sprite sheet">
     <img id="meat" src="assets/images/Meat.png" alt="Cartoon meat">
     <img id="heart" src="assets/images/heart.png" alt="heart cartoon">
     <img id="angry-egg" src="assets/images/angryegg.png" alt="single egg image">
-
+    <!--Title Screen for Game-->
     <div id="start-screen">
         <h1>Rex-Dash</h1>
+        <p id="instructions"><em>Avoid The Eggs And Collect The Meat</em></p>
         <button type="submit" id="start-game">Click to start</button>
         <ul id="buttons">
             <!-- Full screen button-->
@@ -29,8 +29,12 @@
             <!-- Mute Button-->
             <li><button id="mute" type="submit">Mute</button></li>
         </ul>
+        <ul id="controls">
+            <li><strong>Move Right:</strong> Right Arrow Key or Swipe right</li>
+            <li><strong>Move Left:</strong> Left Arrow Key or Swipe Left</li>
+            <li><strong>Jump:</strong> Up Arrow Key or Swipe Up</li>
+        </ul>
     </div>
-
     <script src="assets/javascript/script.js"></script>
 </body>
 
