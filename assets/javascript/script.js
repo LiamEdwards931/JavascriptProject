@@ -37,9 +37,10 @@ window.addEventListener('load', function () {
                     a.key === 'ArrowRight')
                     && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
-                } else if (a.key === 'Enter' && gameOver) {
+                } else if (a.key === 'Shift' && gameOver) {
                     restartGame();
                 }
+                console.log(a.key)
             });
             window.addEventListener('keyup', a => {
                 if (a.key === 'ArrowDown' ||
@@ -318,7 +319,7 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 470, 310);
             context.fillText('You Collected: ', 220, 380);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
-            context.fillText('Press Enter Or Swipe Down to restart', 220, 450);
+            context.fillText('Press Shift Or Swipe Down to restart', 220, 450);
             //red Text
             context.fillStyle = 'red';
             context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
@@ -326,7 +327,7 @@ window.addEventListener('load', function () {
             context.fillText('x ' + score + ' Eggs', 472, 312);
             context.fillText('You Collected: ', 222, 382);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
-            context.fillText('Press Enter Or Swipe Down to restart', 222, 452);
+            context.fillText('Press Shift Or Swipe Down to restart', 222, 452);
         }
     };
     /**
