@@ -13,6 +13,25 @@
     max-height:100%;
 }
 
+#start-screen{
+    width:100%;
+    height:100%;
+    max-width:100%;
+    max-height:100%;
+    text-align:center;
+    background-image:url() center center no-repeat;
+    background-size:cover;
+}
+#start-game{
+    color:white;
+    background: black;
+    border: none;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+}
+
 #canvas1 {
     border: 3px solid white;
     position: absolute;
