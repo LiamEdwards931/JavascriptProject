@@ -21,8 +21,10 @@ window.addEventListener('load', function () {
     const fullScreen = document.getElementById('fullscreen');
     //mute button
     const muteButton = document.getElementById('mute');
+    //dinosaur sound effects
     let dinoSfx = new Audio("assets/audio/dinosaur-2-86565.mp3");
-
+    let rexSfx = new Audio("assets/audio/JurassicPark-Tyrannosaurus_rex-Roaring.wav");
+    let trexSfx = new Audio("assets/audio/T-Rex10.mp3");
 
 
 
@@ -91,8 +93,8 @@ window.addEventListener('load', function () {
             this.speed = 1; // movement of the sprite(rex)
             this.velocityY = 0;
             this.gravity = 1;
-            this.sound = dinoSfx;
-
+            this.sound = rexSfx;
+            this.hitSfx = trexSfx;
         }
         restart() {
             this.x = 0;
@@ -126,6 +128,7 @@ window.addEventListener('load', function () {
                 if (dh < enemy.width / 3 + this.width / 3) { // then checks the radius of the circles for a collision
                     hp--;
                     enemy.markedForRemove = true;
+                    this.hitSfx.play();
                 };
                 if (hp === 0) {
                     gameOver = true;
@@ -391,18 +394,18 @@ window.addEventListener('load', function () {
     //can add to spawn methods to have random intervals for spawns.
     let randomInterval = Math.random() * 1000 + 500;
     //variables for the title screen
-    let startScreen = document.getElementById('start-screen')
+    let startScreen = document.getElementById('start-screen');
     let startButton = document.getElementById('start-game');
     /**
      * Start game function
      */
-    function startGame(){
+    function startGame() {
         canvas.style.display = "block";
         startScreen.style.display = "none";
         startButton.style.display = "none";
         animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
     };
-   startButton.addEventListener('click', startGame);
+    startButton.addEventListener('click', startGame);
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */
