@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
     let hp = 3;
     //variable for meat collected
     let meatCollected = 0;
+    //distance variable
+    let distance = 0;
     //gameOver variable
     let gameOver = false;
     //fullsccreen button
@@ -40,7 +42,6 @@ window.addEventListener('load', function () {
                 } else if (a.key === 'Shift' && gameOver) {
                     restartGame();
                 }
-                console.log(a.key)
             });
             window.addEventListener('keyup', a => {
                 if (a.key === 'ArrowDown' ||
