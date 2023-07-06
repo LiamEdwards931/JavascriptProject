@@ -382,13 +382,25 @@ window.addEventListener('load', function () {
     let lastTime = 0;
     // egg specific times
     let eggTimer = 0;
-    let eggInterval = Math.random() * 10 + 100; // adds new enemy every 1000 ms
+    let eggInterval = Math.random() * 200 + 100; // adds new enemy every 1000 ms
     //meat specific times
     let meatTimer = 0;
     let meatInterval = Math.random() * 2000 + 1000;
     //can add to spawn methods to have random intervals for spawns.
     let randomInterval = Math.random() * 1000 + 500;
-
+    //variables for the title screen
+    let startScreen = document.getElementById('start-screen')
+    let startButton = document.getElementById('start-game');
+    /**
+     * Start game function
+     */
+    function startGame(){
+        canvas.style.display = "block";
+        startScreen.style.display = "none";
+        startButton.style.display = "none";
+        animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
+    };
+   startButton.addEventListener('click', startGame);
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */
@@ -405,6 +417,5 @@ window.addEventListener('load', function () {
         statusText(ctx);
         if (!gameOver) requestAnimationFrame(animate);
     };
-    animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
 });
 
