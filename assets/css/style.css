@@ -6,6 +6,7 @@
     background: black;
     box-sizing: border-box;
 }
+
 /*Title Screen Styling*/
 #start-screen {
     border: 3px solid white;
@@ -64,18 +65,13 @@
     background: rgb(10, 0, 0, 0.5);
 }
 
-#controls {
-    position: fixed;
-    bottom: 10px;
-    line-height: 20px;
-    background: rgb(10, 0, 0, 0.5);
+#start-screen h2{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform: tr
 }
 
-#controls li {
-    float: left;
-    color: white;
-    background: rgb(10, 0, 0, 0.5);
-}
 /*Canvas Style*/
 #canvas1 {
     border: 3px solid white;
@@ -89,13 +85,36 @@
     touch-action: none;
 }
 
-#rex-char,
-#enemy-1,
-#background,
-#eggenemy,
-#meat,
-#heart,
-#angry-egg {
+.canvas-img {
     display: none;
 }
 
+/*instruction screen style*/
+#start-screen em {
+    background: rgb(10, 0, 0, 0.5);
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: white;
+    font-family: cursive;
+    border-radius: 20%;
+}
+
+#controls li {
+    float: left;
+    color: white;
+    background: rgb(10, 0, 0, 0.5);
+    padding-right: 20px;
+    list-style-type: none;
+    font-size: 15px;
+}
+
+#controls {
+    position: fixed;
+    bottom: 10px;
+    line-height: 20px;
+    background: rgb(10, 0, 0, 0.5);
+    width: 100%;
+}

@@ -104,8 +104,9 @@ window.addEventListener('load', function () {
             this.speed = 1; // movement of the sprite(rex)
             this.velocityY = 0;
             this.gravity = 1;
-            this.sound = rexSfx;
+            this.sound = dinoSfx;
             this.hitSfx = trexSfx;
+            this.roar = rexSfx;
         }
         restart() {
             this.x = 0;
@@ -167,6 +168,8 @@ window.addEventListener('load', function () {
                 this.speed = -5;
             } else if ((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipeUp') > -1) && this.onGround()) {
                 this.velocityY -= 35;
+            } else if (input.keys.indexOf('ArrowDown') > -1 || input.keys.indexOf('swipeDown') > -1) {
+                this.roar.play();
             } else {
                 this.speed = 0;
             };

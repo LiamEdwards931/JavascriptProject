@@ -12,27 +12,23 @@
 <body>
     <canvas id="canvas1"></canvas>
     <!--Images for the canvas (Invisible on html as they are drawn with Javascript on the canvas)-->
-    <img id="rex-char" src="assets/images/spritesheets/T-rex walk.png" alt="t-rex spritesheet">
-    <img id="background" src="assets/images/nightbackground.jpg" alt=" Star Background Image">
-    <img id="eggenemy" src="assets/images/spritesheets/eggenemy.png" alt="Egg enemy sprite sheet">
-    <img id="meat" src="assets/images/Meat.png" alt="Cartoon meat">
-    <img id="heart" src="assets/images/heart.png" alt="heart cartoon">
-    <img id="angry-egg" src="assets/images/angryegg.png" alt="single egg image">
+    <img id="rex-char" class="canvas-img" src="assets/images/spritesheets/T-rex walk.png" alt="t-rex spritesheet">
+    <img id="background" class="canvas-img" src="assets/images/nightbackground.jpg" alt=" Star Background Image">
+    <img id="eggenemy" class="canvas-img" src="assets/images/spritesheets/eggenemy.png" alt="Egg enemy sprite sheet">
+    <img id="meat" class="canvas-img" src="assets/images/Meat.png" alt="Cartoon meat">
+    <img id="heart" class="canvas-img" src="assets/images/heart.png" alt="heart cartoon">
+    <img id="angry-egg" class="canvas-img" src="assets/images/angryegg.png" alt="single egg image">
     <!--Title Screen for Game-->
     <div id="start-screen">
         <h1>Rex-Dash</h1>
-        <p id="instructions"><em>Avoid The Eggs And Collect The Meat</em></p>
+        <!--Button to start the game-->
         <button type="submit" id="start-game">Click to start</button>
         <ul id="buttons">
             <!-- Full screen button-->
             <li><button id="fullscreen" type="submit">Fullscreen</button></li>
             <!-- Mute Button-->
             <li><button id="mute" type="submit">Mute</button></li>
-        </ul>
-        <ul id="controls">
-            <li><strong>Move Right:</strong> Right Arrow Key or Swipe right</li>
-            <li><strong>Move Left:</strong> Left Arrow Key or Swipe Left</li>
-            <li><strong>Jump:</strong> Up Arrow Key or Swipe Up</li>
+            <h2><a href="instructions.html">How To Play!</a></h2>
         </ul>
     </div>
     <script src="assets/javascript/script.js"></script>
