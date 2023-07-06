@@ -58,9 +58,10 @@ a:hover {
 }
 
 #start-game {
+    font-family: cursive;
     color: red;
     border: none;
-    background: rgb(10, 0, 0, 0);
+    background: rgb(10, 0, 0, 0.2);
     position: fixed;
     top: 50%;
     left: 50%;
