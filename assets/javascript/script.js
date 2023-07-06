@@ -369,9 +369,13 @@ window.addEventListener('load', function () {
     function Mute() {
         if (dinoSfx.muted) {
             dinoSfx.muted = false;
+            rexSfx.muted = false;
+            trexSfx.muted = false;
             muteButton.innerHTML = "mute";
         } else {
             dinoSfx.muted = true;
+            rexSfx.muted = true;
+            trexSfx.muted = true;
             muteButton.innerHTML = "unmute";
         };
     }
