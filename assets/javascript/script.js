@@ -63,6 +63,7 @@ window.addEventListener('load', function () {
                 const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance of Y touch start and touch end.
                 if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) {
                     this.keys.push('swipeUp'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
+                    if (gameOver) returnHome();
                 } else if (swipeDist > this.touchThreshhold && this.keys.indexOf('swipeDown') === -1) {
                     this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
                     if (gameOver) restartGame(); // resets game on gameOver by swiping down.
@@ -334,7 +335,7 @@ window.addEventListener('load', function () {
             context.fillText('You Collected: ', 220, 380);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
             context.fillText('Press Shift Or Swipe Down to restart', 220, 450);
-            context.fillText('Press TAB to return to title', 220, 40);
+            context.fillText('Press TAB or Swipe Up to return to title', 220, 40);
             //red Text
             context.fillStyle = 'red';
             context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
@@ -343,7 +344,7 @@ window.addEventListener('load', function () {
             context.fillText('You Collected: ', 222, 382);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
             context.fillText('Press Shift Or Swipe Down to restart', 222, 452);
-            context.fillText('Press TAB to return to title', 222, 42);
+            context.fillText('Press TAB or Swipe Up to return to title', 222, 42);
         }
     };
     /**
