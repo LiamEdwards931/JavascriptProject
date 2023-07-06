@@ -160,9 +160,9 @@ window.addEventListener('load', function () {
                 this.frameTimer += deltaTime;
             };
             // controls for the rex char 
-            if (input.keys.indexOf('ArrowRight') > -1) {
+            if (input.keys.indexOf('ArrowRight') > -1 || input.keys.indexOf('swipeRight') > -1) {
                 this.speed = 5;
-            } else if (input.keys.indexOf('ArrowLeft') > -1) {
+            } else if (input.keys.indexOf('ArrowLeft') > -1 || input.keys.indexOf('swipeLeft') > -1) {
                 this.speed = -5;
             } else if ((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipeUp') > -1) && this.onGround()) {
                 this.velocityY -= 35;
