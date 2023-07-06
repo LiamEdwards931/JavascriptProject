@@ -76,40 +76,17 @@
     display: none;
 }
 
-
-#buttons {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, -5%);
-
+#mute,
+#fullscreen {
+    background: rgb(10, 0, 0, 0);
+    color: white;
+    cursor: pointer;
 }
 
 #buttons li {
     list-style-type: none;
     display: block;
-    float: left;
-
-}
-
-#mute,
-#fullscreen {
-    font-size: 15px;
-    text-align: center;
-    background: black;
-    color: white;
-    cursor: pointer;
-    border: white 2px solid;
-    margin-left: 10px;
-    height: 30px;
+    float: right;
+    margin: 10px;
     border-radius: 20%;
-    padding: 3px;
-}
-
-@media screen and (max-height:414px) {
-
-    #mute,
-    #fullscreen {
-        display: none;
-    }
 }

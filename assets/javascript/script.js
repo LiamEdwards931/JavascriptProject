@@ -334,6 +334,7 @@ window.addEventListener('load', function () {
             context.fillText('You Collected: ', 220, 380);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 470, 380);
             context.fillText('Press Shift Or Swipe Down to restart', 220, 450);
+            context.fillText('Press TAB to return to title', 220, 40);
             //red Text
             context.fillStyle = 'red';
             context.fillText('Game Over, You Ran Out Of Lives!', 202, 262);
@@ -342,6 +343,7 @@ window.addEventListener('load', function () {
             context.fillText('You Collected: ', 222, 382);
             context.fillText('x ' + meatCollected + ' Pieces Of Meat', 472, 382);
             context.fillText('Press Shift Or Swipe Down to restart', 222, 452);
+            context.fillText('Press TAB to return to title', 222, 42);
         }
     };
     /**
@@ -365,13 +367,13 @@ window.addEventListener('load', function () {
     function toggleFullScreen() {
         console.log(document.fullscreenElement);
         if (!document.fullscreenElement) { // requests the fullscreenElement and returns an error if it cannot connect. 
-            canvas.requestFullscreen().catch(err => { //.catch is follow up code on the requestFullScreen to ensure that the game can be broswed in fullscreen
+            startScreen.requestFullscreen().catch(err => {
                 alert(`There was an error making the game FullScreen: ${err.message}`);
             });
         } else {
             document.exitFullscreen();
         }
-    }
+    };
     //Event listener for the fullScreenButton
     fullScreen.addEventListener('click', toggleFullScreen);
 
@@ -416,10 +418,21 @@ window.addEventListener('load', function () {
     function startGame() {
         canvas.style.display = "block";
         startScreen.style.display = "none";
-        startButton.style.display = "none";
+        gameOver = false;
         animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
     };
     startButton.addEventListener('click', startGame);
+
+    /**
+     * Back to Homepage
+     */
+    function returnHome() {
+        canvas.style.display = "none";
+        startScreen.style.display = "block";
+    }
+    window.addEventListener('keydown', a => {
+        if (a.key === 'Tab') returnHome();
+    });
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */
