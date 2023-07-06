@@ -31,14 +31,18 @@ a {
     background: rgb(10, 0, 0, 0);
 }
 
-a::active {
+a:active {
     color: white;
     text-decoration: none;
 }
 
-a::after {
+a:after {
     color: white;
     text-decoration: none;
+}
+
+a:hover {
+    color: red;
 }
 
 #start-screen h1 {
@@ -118,19 +122,25 @@ a::after {
     border-radius: 20%;
 }
 
-#controls li {
-    float: left;
-    color: white;
+#controls {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: rgb(10, 0, 0, 0.5);
-    padding-right: 20px;
-    list-style-type: none;
-    font-size: 15px;
+    width: 80%;
+    text-align: center;
+    border-radius: 10%;
 }
 
-#controls {
-    position: fixed;
-    bottom: 10px;
-    line-height: 20px;
-    background: rgb(10, 0, 0, 0.5);
-    width: 100%;
+#controls li {
+    color: white;
+    background: rgb(10, 0, 0, 0.2);
+    list-style-type: none;
+    font-size: 15px;
+    line-height: 30px;
+}
+
+#controls strong {
+    background: rgb(10, 0, 0, 0.2);
 }
