@@ -26,8 +26,6 @@ window.addEventListener('load', function () {
     let rexSfx = new Audio("assets/audio/JurassicPark-Tyrannosaurus_rex-Roaring.wav");
     let trexSfx = new Audio("assets/audio/T-Rex10.mp3");
 
-
-
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
         constructor() {
@@ -145,13 +143,6 @@ window.addEventListener('load', function () {
                 if (hp === 0) {
                     gameOver = true;
                 };
-                if (meatCollected >= 15) {
-                    enemy.speed = 12;
-                } else if (meatCollected >= 30) {
-                    enemy.speed = 14;
-                } else if (meatCollected >= 45) {
-                    enemy.speed = 16;
-                }
             });
             //animation for the rex character
             if (this.frameTimer > this.frameInterval) {
@@ -191,7 +182,8 @@ window.addEventListener('load', function () {
         onGround() {
             return this.y >= this.gameHeight - this.height;
         }
-    }
+    };
+    
     //class to create the background object.
     class Background {
         constructor(gameWidth, gameHeight) {
@@ -217,6 +209,7 @@ window.addEventListener('load', function () {
             this.x = 0;
         }
     };
+    
     //Class structure for the Egg enemies.
     class EggEnemy {
         constructor(gameWidth, gameHeight) {
@@ -254,6 +247,7 @@ window.addEventListener('load', function () {
             };
         }
     };
+    
     //Meat collectible object
     class Meat {
         constructor(gameWidth, gameHeight) {
@@ -272,14 +266,14 @@ window.addEventListener('load', function () {
         };
         update() {
             this.x -= this.speed;
-            if (this.x < 0 - this.width) this.markedForRemove = true;// removes meat object from array when it leaves screen
+            if (this.x < 0 - this.width) this.markedForRemove = true;
+            distance++;// removes meat object from array when it leaves screen
         };
     };
-    /**Pushed new enemies into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.
-     */
+    
+    /**Pushes new egg enemy into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.*/
     function Spawns(deltaTime) {
-        // egg spawns
-        if (eggTimer > eggInterval + randomInterval) {
+       if (eggTimer > eggInterval + randomInterval) {
             enemies.push(new EggEnemy(canvas.width, canvas.height));
             eggTimer = 0;
         } else {
@@ -290,6 +284,23 @@ window.addEventListener('load', function () {
             egg.update(deltaTime);
         });
         enemies = enemies.filter(egg => !egg.markedForRemove);
+        if(meatCollected >= 20){
+            eggInterval = Math.random() * 900 + 400;
+            meatInterval = Math.random() * 1000 + 800;
+            randomInterval = Math.random() * 900 + 400;
+        } else if(meatCollected >= 40){
+            eggInterval = Math.random() * 800 + 300;
+            meatInterval = Math.random() * 900 + 600;
+            randomInterval = Math.random() * 800 + 200;
+        } else if(meatCollected >= 60){
+            eggInterval = Math.random() * 700 + 200;
+            meatInterval = Math.random() * 800 + 400;
+            randomInterval = Math.random() * 700 + 200;
+        } else if (meatCollected >= 80){
+            eggInterval = Math.random() * 600 + 100;
+            meatInterval = Math.random() * 700 + 200;
+            randomInterval = Math.random() * 600 + 100;
+        }
     };
 
 
@@ -313,7 +324,7 @@ window.addEventListener('load', function () {
     let heartImg = document.getElementById('heart');
     let angryEgg = document.getElementById('angry-egg');
     /**
-     * Displays the HP and Meat collected status. also displays message when the game ends.
+     *  Displays the HP and Meat collected status. also displays message when the game ends.
      * the text is written twice to create a shadow effect.
      */
     function statusText(context) {
@@ -350,10 +361,9 @@ window.addEventListener('load', function () {
             context.fillText('Press TAB or Swipe Up to return to title', 222, 42);
         }
     };
-    /**
-     * Restarts the game.
-     */
-    function restartGame() {
+    
+    /** Restarts the game.*/
+     function restartGame() {
         gameOver = false;
         rexChar.restart();
         background.restart();
@@ -365,9 +375,7 @@ window.addEventListener('load', function () {
         animate(0);
     };
 
-    /**
-     * Toggles fullscreen on canvas.
-     */
+    /** Toggles fullscreen on canvas.*/
     function toggleFullScreen() {
         console.log(document.fullscreenElement);
         if (!document.fullscreenElement) { // requests the fullscreenElement and returns an error if it cannot connect. 
@@ -378,7 +386,7 @@ window.addEventListener('load', function () {
             document.exitFullscreen();
         }
     };
-    //Event listener for the fullScreenButton
+    //Event listener for the fullScreen Button
     fullScreen.addEventListener('click', toggleFullScreen);
 
     /**Toggles Mute */
@@ -395,7 +403,9 @@ window.addEventListener('load', function () {
             muteButton.innerHTML = "unmute";
         };
     }
+    //Event listener for the Mute button
     muteButton.addEventListener('click', Mute);
+    
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
@@ -407,15 +417,16 @@ window.addEventListener('load', function () {
     let lastTime = 0;
     // egg specific times
     let eggTimer = 0;
-    let eggInterval = Math.random() * 200 + 100; // adds new enemy every 1000 ms
+    let eggInterval = Math.random() * 1000 + 500; // adds new enemy every 1000 ms
     //meat specific times
     let meatTimer = 0;
-    let meatInterval = Math.random() * 2000 + 1000;
+    let meatInterval = Math.random() * 1000 + 1000;
     //can add to spawn methods to have random intervals for spawns.
     let randomInterval = Math.random() * 1000 + 500;
     //variables for the title screen
     let startScreen = document.getElementById('start-screen');
     let startButton = document.getElementById('start-game');
+    
     /**
      * Start game function
      */
@@ -437,6 +448,7 @@ window.addEventListener('load', function () {
     window.addEventListener('keydown', a => {
         if (a.key === 'Tab') returnHome();
     });
+    
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */
