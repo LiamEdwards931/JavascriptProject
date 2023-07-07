@@ -25,6 +25,8 @@ window.addEventListener('load', function () {
     let dinoSfx = new Audio("assets/audio/dinosaur-2-86565.mp3");
     let rexSfx = new Audio("assets/audio/JurassicPark-Tyrannosaurus_rex-Roaring.wav");
     let trexSfx = new Audio("assets/audio/T-Rex10.mp3");
+    let titleAudio = new Audio("assets/audio/titlescreen.mp3");
+    let gameAudio = new Audio("assets/audio/rungame.mp3");
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
     class Controls {
@@ -395,11 +397,13 @@ window.addEventListener('load', function () {
             dinoSfx.muted = false;
             rexSfx.muted = false;
             trexSfx.muted = false;
+            gameAudio = false;
             muteButton.innerHTML = "Mute";
         } else {
             dinoSfx.muted = true;
             rexSfx.muted = true;
             trexSfx.muted = true;
+            gameAudio = true;
             muteButton.innerHTML = "Unmute";
         };
     }

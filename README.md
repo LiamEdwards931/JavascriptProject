@@ -42,3 +42,4 @@
 - Audio for getting hit by the eggs was taken from [Film Masters](https://www.youtube.com/watch?v=b3NYvwd8vBI)
 - The meat image was taken from [superautopets](https://superautopets.fandom.com/wiki/Meat_Bone)
 - the heart image was taken from [etsy](https://etsy.com)
+- Audio for title screen and Game run was taken from [PixaBay](https://pixabay.com/music/search/dinosaur/)
