@@ -395,12 +395,12 @@ window.addEventListener('load', function () {
             dinoSfx.muted = false;
             rexSfx.muted = false;
             trexSfx.muted = false;
-            muteButton.innerHTML = "mute";
+            muteButton.innerHTML = "Mute";
         } else {
             dinoSfx.muted = true;
             rexSfx.muted = true;
             trexSfx.muted = true;
-            muteButton.innerHTML = "unmute";
+            muteButton.innerHTML = "Unmute";
         };
     }
     //Event listener for the Mute button
