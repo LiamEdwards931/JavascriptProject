@@ -13,8 +13,6 @@ window.addEventListener('load', function () {
     let hp = 3;
     //variable for meat collected
     let meatCollected = 0;
-    //distance variable
-    let distance = 0;
     //gameOver variable
     let gameOver = false;
     //fullsccreen button
@@ -185,7 +183,7 @@ window.addEventListener('load', function () {
             return this.y >= this.gameHeight - this.height;
         }
     };
-    
+
     //class to create the background object.
     class Background {
         constructor(gameWidth, gameHeight) {
@@ -211,7 +209,7 @@ window.addEventListener('load', function () {
             this.x = 0;
         }
     };
-    
+
     //Class structure for the Egg enemies.
     class EggEnemy {
         constructor(gameWidth, gameHeight) {
@@ -249,7 +247,7 @@ window.addEventListener('load', function () {
             };
         }
     };
-    
+
     //Meat collectible object
     class Meat {
         constructor(gameWidth, gameHeight) {
@@ -272,10 +270,10 @@ window.addEventListener('load', function () {
             distance++;// removes meat object from array when it leaves screen
         };
     };
-    
+
     /**Pushes new egg enemy into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.*/
     function Spawns(deltaTime) {
-       if (eggTimer > eggInterval + randomInterval) {
+        if (eggTimer > eggInterval + randomInterval) {
             enemies.push(new EggEnemy(canvas.width, canvas.height));
             eggTimer = 0;
         } else {
@@ -286,19 +284,19 @@ window.addEventListener('load', function () {
             egg.update(deltaTime);
         });
         enemies = enemies.filter(egg => !egg.markedForRemove);
-        if(meatCollected >= 20){
+        if (meatCollected >= 20) {
             eggInterval = Math.random() * 900 + 400;
             meatInterval = Math.random() * 1000 + 800;
             randomInterval = Math.random() * 900 + 400;
-        } else if(meatCollected >= 40){
+        } else if (meatCollected >= 40) {
             eggInterval = Math.random() * 800 + 300;
             meatInterval = Math.random() * 900 + 600;
             randomInterval = Math.random() * 800 + 200;
-        } else if(meatCollected >= 60){
+        } else if (meatCollected >= 60) {
             eggInterval = Math.random() * 700 + 200;
             meatInterval = Math.random() * 800 + 400;
             randomInterval = Math.random() * 700 + 200;
-        } else if (meatCollected >= 80){
+        } else if (meatCollected >= 80) {
             eggInterval = Math.random() * 600 + 100;
             meatInterval = Math.random() * 700 + 200;
             randomInterval = Math.random() * 600 + 100;
@@ -363,9 +361,9 @@ window.addEventListener('load', function () {
             context.fillText('Press TAB or Swipe Up to return to title', 222, 42);
         }
     };
-    
+
     /** Restarts the game.*/
-     function restartGame() {
+    function restartGame() {
         gameOver = false;
         rexChar.restart();
         background.restart();
@@ -409,7 +407,7 @@ window.addEventListener('load', function () {
     }
     //Event listener for the Mute button
     muteButton.addEventListener('click', Mute);
-    
+
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
@@ -430,7 +428,7 @@ window.addEventListener('load', function () {
     //variables for the title screen
     let startScreen = document.getElementById('start-screen');
     let startButton = document.getElementById('start-game');
-    
+
     /**
      * Start game function
      */
@@ -443,16 +441,24 @@ window.addEventListener('load', function () {
     startButton.addEventListener('click', startGame);
 
     /**
-     * Back to Homepage
+     * Back to Homepage - Restarts all values to starting point
      */
     function returnHome() {
         canvas.style.display = "none";
         startScreen.style.display = "block";
-    }
+        gameOver = false;
+        rexChar.restart();
+        background.restart();
+        enemies = [];
+        meats = [];
+        hp = 3;
+        score = 0;
+        meatCollected = 0;
+    };
     window.addEventListener('keydown', a => {
         if (a.key === 'Tab') returnHome();
     });
-    
+
     /**
      * Runs the animation loop by repeatedly calling the animate function block.
      */

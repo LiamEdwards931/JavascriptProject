@@ -8,16 +8,15 @@
 
 - Code was tested on Microsoft Edge, FireFox and Google Chrome browser.
 - Testing involved running the game loop and looking at bugs with the web development tools the following criteria have all been tested:
-    - Tested Player Rex for hit markers, jump height, animation speed, "gravity" factor to bring rex back down, move left + right speeds, and SFX on Arrow down for the rex roar,found some bugs that are documented in the [bugs](bugs) section of the README. All tested for PC use and Mobile use.
-    - Tested eggEnemy intervals to make sure the game was beginner friendly, had a friend who is inexperienced at games to play to see if the game was intuitve and easy to play.
-    - tested the difficulty increase to ensure that the code was in fact increasing the spawn rate of enemies as you collected more Meat objects.
-    - Tested Meat collection to ensure that it was collecting properly and increasing the meatCollected score and playing the correct SFX on collection. 
-    - Tested background to ensure that the scroll speed and "parralax effect" is working correctly.
-    - Tested GameOver to ensure that it activates when hp value reached 0.
-    - Tested restartGame to enure that when shift is pressed when it is gameOver the game restarts from beginning.
-    - Tested Mute function and ensured that all sounds are muted when button is clicked.
-    - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
-
+  - Tested Player Rex for hit markers, jump height, animation speed, "gravity" factor to bring rex back down, move left + right speeds, and SFX on Arrow down for the rex roar,found some bugs that are documented in the [bugs](bugs) section of the README. All tested for PC use and Mobile use.
+  - Tested eggEnemy intervals to make sure the game was beginner friendly, had a friend who is inexperienced at games to play to see if the game was intuitve and easy to play.
+  - tested the difficulty increase to ensure that the code was in fact increasing the spawn rate of enemies as you collected more Meat objects.
+  - Tested Meat collection to ensure that it was collecting properly and increasing the meatCollected score and playing the correct SFX on collection.
+  - Tested background to ensure that the scroll speed and "parralax effect" is working correctly.
+  - Tested GameOver to ensure that it activates when hp value reached 0.
+  - Tested restartGame to enure that when shift is pressed when it is gameOver the game restarts from beginning.
+  - Tested Mute function and ensured that all sounds are muted when button is clicked.
+  - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
 
 ## Bugs
 
@@ -31,7 +30,7 @@
 - Changed the reset game button to shift as there was a problem with the mute button activating when game was resetting.
 - canvas and title screen jumped when swiping on mobile (fixed) - set the CSS property of canvas and title screen to "touch-action:none".
 - When fullscreen button was clicked it would only go to fullscreen on the Canvas (fixed) - set the property the fullscreen was looking for to the window of the document and not the canvas specifically.
-
+- Bug where back to title screen button would keep the canvas in the same state it was when button was pressed (fixed) - set the same values as restart game minus the animate(0) call to reset everything when back to home
 
 ## Credits
 
