@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
     let hp = 3;
     //variable for meat collected
     let meatCollected = 0;
+    //distance variable
+    let distance = 0;
     //gameOver variable
     let gameOver = false;
     //fullsccreen button
@@ -372,12 +374,12 @@ window.addEventListener('load', function () {
         hp = 3;
         score = 0;
         meatCollected = 0;
+        gameAudio.currentTime = 0;
         animate(0);
     };
 
     /** Toggles fullscreen on canvas.*/
     function toggleFullScreen() {
-        console.log(document.fullscreenElement);
         if (!document.fullscreenElement) { // requests the fullscreenElement and returns an error if it cannot connect. 
             startScreen.requestFullscreen().catch(err => {
                 alert(`There was an error making the game FullScreen: ${err.message}`);
@@ -395,18 +397,19 @@ window.addEventListener('load', function () {
             dinoSfx.muted = false;
             rexSfx.muted = false;
             trexSfx.muted = false;
-            gameAudio = false;
+            gameAudio.muted = false;
             muteButton.innerHTML = "Mute";
         } else {
             dinoSfx.muted = true;
             rexSfx.muted = true;
             trexSfx.muted = true;
-            gameAudio = true;
+            gameAudio.muted = true;
             muteButton.innerHTML = "Unmute";
         };
     }
     //Event listener for the Mute button
     muteButton.addEventListener('click', Mute);
+
 
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
@@ -454,9 +457,11 @@ window.addEventListener('load', function () {
         hp = 3;
         score = 0;
         meatCollected = 0;
+        gameAudio.pause();
+        gameAudio.currentTime = 0;
     };
     window.addEventListener('keydown', a => {
-        if (a.key === 'Tab') returnHome();
+        if (a.key === 'Tab' && gameOver) returnHome();
     });
 
     /**
@@ -473,6 +478,7 @@ window.addEventListener('load', function () {
         Spawns(deltaTime);
         SpawnMeat(deltaTime);
         statusText(ctx);
+        if (Mute) gameAudio.play();
         if (!gameOver) requestAnimationFrame(animate);
     };
 });
