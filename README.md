@@ -1,5 +1,9 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+## Markup
+
+- Code is written using Tab key spacing on Html, CSS and Javascript.
+
 ## Testing
 
 - Code was tested on Microsoft Edge, FireFox and Google Chrome browser.
