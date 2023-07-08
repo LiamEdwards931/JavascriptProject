@@ -1,5 +1,8 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+## Live deployment 
+The final project that is stored on gitHub is located [here](https://liamedwards931.github.io/JavascriptProject/)
+
 ## Markup
 
 - Code is written using Tab key spacing on Html, CSS and Javascript.
