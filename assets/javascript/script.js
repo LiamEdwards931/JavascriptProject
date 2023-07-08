@@ -21,6 +21,7 @@ window.addEventListener('load', function () {
     const fullScreen = document.getElementById('fullscreen');
     //mute button
     const muteButton = document.getElementById('mute');
+    const musicButton = document.getElementById('music');
     //dinosaur sound effects
     let dinoSfx = new Audio("assets/audio/dinosaur-2-86565.mp3");
     let rexSfx = new Audio("assets/audio/JurassicPark-Tyrannosaurus_rex-Roaring.wav");
@@ -397,20 +398,27 @@ window.addEventListener('load', function () {
             dinoSfx.muted = false;
             rexSfx.muted = false;
             trexSfx.muted = false;
-            gameAudio.muted = false;
-            muteButton.innerHTML = "Mute";
+            muteButton.innerHTML = "SFX On";
         } else {
             dinoSfx.muted = true;
             rexSfx.muted = true;
             trexSfx.muted = true;
-            gameAudio.muted = true;
-            muteButton.innerHTML = "Unmute";
+            muteButton.innerHTML = "SFX Off";
         };
     }
     //Event listener for the Mute button
     muteButton.addEventListener('click', Mute);
 
-
+    function toggleMusic() {
+        if (gameAudio.muted) {
+            gameAudio.muted = false;
+            musicButton.innerHTML = "Music On";
+        } else {
+            gameAudio.muted = true;
+            musicButton.innerHTML = "Music Off";
+        };
+    }
+    musicButton.addEventListener('click', toggleMusic);
     //Adds the variables to the different assets of the game so they can be called in the animate function.
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
