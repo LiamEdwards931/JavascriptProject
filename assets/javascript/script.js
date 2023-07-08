@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
     //variable for the score
     let score = 0;
     //variable for HP
-    let hp = 3;
+    let hp = 5;
     //variable for meat collected
     let meatCollected = 0;
     //distance variable
@@ -287,6 +287,7 @@ window.addEventListener('load', function () {
             egg.update(deltaTime);
         });
         enemies = enemies.filter(egg => !egg.markedForRemove);
+        // difficulty modifier
         if (meatCollected >= 20) {
             eggInterval = Math.random() * 900 + 400;
             meatInterval = Math.random() * 1000 + 800;
