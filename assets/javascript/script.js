@@ -35,7 +35,8 @@ window.addEventListener('load', function () {
             this.keys = [];
             this.touchY = '';
             this.touchX = '';
-            this.touchThreshhold = 30; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
+            this.touchThreshhold = 30;
+            this.touchX = 0; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
             window.addEventListener('keydown', a => {
                 if ((a.key === 'ArrowDown' ||
                     a.key === 'ArrowUp' ||
@@ -70,9 +71,9 @@ window.addEventListener('load', function () {
                     if (gameOver) restartGame(); // resets game on gameOver by swiping down.
                 }
                 const swipeDistance = a.changedTouches[0].pageX - this.touchX; // calculates distance of X touch start and end
-                if (swipeDistance < -this.touchThreshhold && this.keys.indexOf('swipeLeft') === -1) {
+                if (swipeDistance < -this.touchX && this.keys.indexOf('swipeLeft') === -1) {
                     this.keys.push('swipeLeft');
-                } else if (swipeDistance > this.touchThreshhold && this.keys.indexOf('swipeRight') === -1) {
+                } else if (swipeDistance > this.touchX && this.keys.indexOf('swipeRight') === -1) {
                     this.keys.push('swipeRight');
                 }
             });
