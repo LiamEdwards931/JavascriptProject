@@ -36,7 +36,7 @@ window.addEventListener('load', function () {
             this.touchY = '';
             this.touchX = '';
             this.touchThreshhold = 30;
-            this.touchX = 0; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
+            this.xThreshhold = 0; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
             window.addEventListener('keydown', a => {
                 if ((a.key === 'ArrowDown' ||
                     a.key === 'ArrowUp' ||
@@ -60,14 +60,10 @@ window.addEventListener('load', function () {
             window.addEventListener('touchstart', a => {
                 this.touchY = a.changedTouches[0].pageY;
                 this.touchX = a.changedTouches[0].pageX;
-                if (this.touchX > canvas.width / 2 && this.keys.indexOf('moveRight') === -1) {
-                    this.keys.push('moveRight');
-                } else if (this.touchX < canvas.width / 2 && this.keys.indexOf('moveLeft') === -1) {
-                    this.keys.push('moveLeft');
-                }
             });
             window.addEventListener('touchmove', a => {
                 const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance of Y touch start and touch end.
+                const xDist = a.changedTouches[0].pageX - this.touchX;
                 if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) {
                     this.keys.push('swipeUp'); //pushes swipe up if swipe up distance is less than -Touch threshold and also checks it's not already in the this.keys array
                     if (gameOver) returnHome();
@@ -75,13 +71,20 @@ window.addEventListener('load', function () {
                     this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
                     if (gameOver) restartGame(); // resets game on gameOver by swiping down.
                 }
+                if (xDist < -this.xThreshhold && this.keys.indexOf('swipeLeft') === -1) {
+                    this.keys.push('swipeLeft');
+                    console.log(this.keys);
+                } else if (xDist > this.xThreshhold && this.keys.indexOf('swipeRight') === -1) {
+                    this.keys.push('swipeRight');
+                    console.log(this.keys);
+                }
             });
 
             window.addEventListener('touchend', a => {
                 this.keys.splice(this.keys.indexOf('swipeUp'), 1); //removes the swipe from array after touchend
                 this.keys.splice(this.keys.indexOf('swipeDown'), 1);
-                this.keys.splice(this.keys.indexOf('moveRight'), 1);
-                this.keys.splice(this.keys.indexOf('moveLeft'), 1);
+                this.keys.splice(this.keys.indexOf('swipeRight'), 1);
+                this.keys.splice(this.keys.indexOf('swipeLeft'), 1);
             });
         }
     };
@@ -156,9 +159,9 @@ window.addEventListener('load', function () {
                 this.frameTimer += deltaTime;
             };
             // controls for the rex char 
-            if (input.keys.indexOf('ArrowRight') > -1 || input.keys.indexOf('moveRight') > -1) {
+            if (input.keys.indexOf('ArrowRight') > -1 || input.keys.indexOf('swipeRight') > -1) {
                 this.speed = 5;
-            } else if (input.keys.indexOf('ArrowLeft') > -1 || input.keys.indexOf('moveLeft') > -1) {
+            } else if (input.keys.indexOf('ArrowLeft') > -1 || input.keys.indexOf('swipeLeft') > -1) {
                 this.speed = -5;
             } else if ((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipeUp') > -1) && this.onGround()) {
                 this.velocityY -= 35;
