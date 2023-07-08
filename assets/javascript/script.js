@@ -195,7 +195,7 @@ window.addEventListener('load', function () {
             this.image = document.getElementById('background');
             this.x = 0;
             this.y = 0;
-            this.width = 1800;
+            this.width = 3550;
             this.height = 720;
             this.speed = 5;
         };
