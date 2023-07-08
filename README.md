@@ -54,7 +54,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 ## Credits
 
 - T-rex spritesheet was taken from [pngkey](https://www.pngkey.com/download/u2e6o0o0o0w7w7a9_dinosaur-trex-dino-sprite-sheet/)
-- Egg enemy characyer was taken from [bevoulin](https://bevouliin.com/category/game-asset/game-characters/page/3/)
+- Egg enemy character was taken from [bevoulin](https://bevouliin.com/category/game-asset/game-characters/page/3/)
 - Audio for rex was taken from [pixabay](https://pixabay.com/sound-effects/search/t-rex/)
 - Audio for collecting the meat was taken from[Memozee](http://animal.memozee.com/animal/SOUND/JurassicPark-Tyrannosaurus_rex-Roaring.wav)
 - Audio for getting hit by the eggs was taken from [Film Masters](https://www.youtube.com/watch?v=b3NYvwd8vBI)
