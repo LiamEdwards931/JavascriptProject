@@ -1,7 +1,7 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Rex-Run
-Rex Run is an endless sidescroll game, the purpose of it is to collect the meat that fly across the screen and to dodge the enemy egg characters, 
+## Rex-Dash
+Rex Dash is an endless sidescroll game, the purpose of it is to collect the meat that fly across the screen and to dodge the enemy egg characters, 
 this game was designed for anybody of any age to play! it is fully optimised for PC and mobile devices alike and is intented for audiences of all backgrounds.
 
 ## Live deployment
