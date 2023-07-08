@@ -1,8 +1,22 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Live deployment
+## Rex-Run
+Rex Run is an endless sidescroll game, the purpose of it is to collect the meat that fly across the screen and to dodge the enemy egg characters, 
+this game was designed for anybody of any age to play! it is fully optimised for PC and mobile devices alike and is intented for audiences of all backgrounds.
 
+## Live deployment
 The final project that is stored on gitHub is located [here](https://liamedwards931.github.io/JavascriptProject/)
+
+![Responsive screen shot of the project](assets/images/readmeimg/responsivescreen.png)
+
+## Contents
+
+[Title](#rex-run)
+[Live deployment](#live-deployment)
+[Markup](#markup)
+[Testing](#testing)
+[bugs](#bugs)
+[credits](#credits)
 
 ## Markup
 
@@ -47,3 +61,4 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - The meat image was taken from [superautopets](https://superautopets.fandom.com/wiki/Meat_Bone)
 - the heart image was taken from [etsy](https://etsy.com)
 - Audio for title screen and Game run was taken from [PixaBay](https://pixabay.com/music/search/dinosaur/)
+- Animation techniques/Movement techniques were learned from Youtube [Franks Laboratory](https://www.youtube.com/watch?v=GFO_txvwK_c)
