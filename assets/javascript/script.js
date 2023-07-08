@@ -35,8 +35,8 @@ window.addEventListener('load', function () {
             this.keys = [];
             this.touchY = '';
             this.touchX = '';
-            this.touchThreshhold = 30;
-            this.xThreshhold = 0; //min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
+            this.touchThreshhold = 30;//min of a 30px swipe to make character Jump to ensure jumps dont accidently occur. calculated between touch start and touch end
+            this.xThreshhold = 10;
             window.addEventListener('keydown', a => {
                 if ((a.key === 'ArrowDown' ||
                     a.key === 'ArrowUp' ||
