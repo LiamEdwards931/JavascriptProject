@@ -60,6 +60,11 @@ window.addEventListener('load', function () {
             window.addEventListener('touchstart', a => {
                 this.touchY = a.changedTouches[0].pageY;
                 this.touchX = a.changedTouches[0].pageX;
+                if (this.touchX > canvas.width / 2 && this.keys.indexOf('moveRight') === -1) {
+                    this.keys.push('moveRight');
+                } else if (this.touchX < canvas.width / 2 && this.keys.indexOf('moveLeft') === -1) {
+                    this.keys.push('moveLeft');
+                }
             });
             window.addEventListener('touchmove', a => {
                 const swipeDist = a.changedTouches[0].pageY - this.touchY; // calculates the distance of Y touch start and touch end.
@@ -70,19 +75,13 @@ window.addEventListener('load', function () {
                     this.keys.push('swipeDown'); //pushes swipe down if disantace is more than touchthreshold and also checks it's not already in the this.keys array
                     if (gameOver) restartGame(); // resets game on gameOver by swiping down.
                 }
-                const swipeDistance = a.changedTouches[0].pageX - this.touchX; // calculates distance of X touch start and end
-                if (swipeDistance < -this.touchX && this.keys.indexOf('swipeLeft') === -1) {
-                    this.keys.push('swipeLeft');
-                } else if (swipeDistance > this.touchX && this.keys.indexOf('swipeRight') === -1) {
-                    this.keys.push('swipeRight');
-                }
             });
 
             window.addEventListener('touchend', a => {
                 this.keys.splice(this.keys.indexOf('swipeUp'), 1); //removes the swipe from array after touchend
                 this.keys.splice(this.keys.indexOf('swipeDown'), 1);
-                this.keys.splice(this.keys.indexOf('swipeRight'), 1);
-                this.keys.splice(this.keys.indexOf('swipeLeft'), 1);
+                this.keys.splice(this.keys.indexOf('moveRight'), 1);
+                this.keys.splice(this.keys.indexOf('moveLeft'), 1);
             });
         }
     };
@@ -157,9 +156,9 @@ window.addEventListener('load', function () {
                 this.frameTimer += deltaTime;
             };
             // controls for the rex char 
-            if (input.keys.indexOf('ArrowRight') > -1 || input.keys.indexOf('swipeRight') > -1) {
+            if (input.keys.indexOf('ArrowRight') > -1 || input.keys.indexOf('moveRight') > -1) {
                 this.speed = 5;
-            } else if (input.keys.indexOf('ArrowLeft') > -1 || input.keys.indexOf('swipeLeft') > -1) {
+            } else if (input.keys.indexOf('ArrowLeft') > -1 || input.keys.indexOf('moveLeft') > -1) {
                 this.speed = -5;
             } else if ((input.keys.indexOf('ArrowUp') > -1 || input.keys.indexOf('swipeUp') > -1) && this.onGround()) {
                 this.velocityY -= 35;
