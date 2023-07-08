@@ -1,6 +1,7 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Live deployment 
+## Live deployment
+
 The final project that is stored on gitHub is located [here](https://liamedwards931.github.io/JavascriptProject/)
 
 ## Markup
@@ -20,7 +21,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - Tested restartGame to enure that when shift is pressed when it is gameOver the game restarts from beginning.
   - Tested Mute function and ensured that all sounds are muted when button is clicked.
   - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
-  - had issues with the movement on phone not registering swipe left and right during a swipe up jump (fixed)- changed the event lisetener to touch instead of swipe for left and right movement.
+  - had issues with the movement on phone not registering swipe left and right during a swipe up jump (fixed) - this.touchX was registered as variable twice and was resetting initial swipe position instead of registering a swipe.
 
 ## Bugs
 
