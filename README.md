@@ -82,6 +82,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 ![full index page screenshot](assets/images/readmeimg/indexscreenshot.png)
 
 - Mute buttons on the index page
+
 ![Mute buttons screenshot](assets/images/readmeimg/mutefeatures.png)
 
 There are two different mute functions available to the user so they have the choice to play with or without music and with or without sound effects or with or without sound effects and music.
