@@ -27,6 +27,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 ## Markup
 
 - Code is written using Tab key spacing on Html, CSS and Javascript.
+  
   [home](#rex-dash)
 
 ## User experience
@@ -40,6 +41,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - As a user I would expect the game to not be too difficult that it is not fun, but challenging enough to make it enjoyable.
 - As a user I would expect to see an increase in difficulty as I progress.
 - As a user I would expect to see what my scores were when the game has ended.
+  
   [home](#rex-dash)
 
   ## Inspiration
@@ -48,6 +50,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
     - Rex dash was inspired by my own personal fondeness of the jurassic era, and I thought it would be great to be able to make a game to reflect that fondness. 
     - The entire project inspiration was based around a spritesheet I had found online of the orange T-rex and rex-dash was born from that. 
     - I mapped out the features of the game and the general style I was going for with notepad on my desktop, and implemented piece by piece by adding the media and images I thought would fit well with the style I was looking to create. 
+
 [home](#rex-dash)
 
 ## Site Structure
@@ -57,6 +60,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - The div element is placed in the center of the screen as is the HUB for the game, it allows you to click to play, toggle mute and takes you to the instructions page.
 - the canvas element is placed also in the center of the screen with the exact same dimensions as the div but in JS will only become active once click to play is selected.
 - There is no need for a header or footer as all the navigation elements are within the div which is completely compliant with mobile users.
+
 [home](#rex-dash)
 
 ## Design choices 
@@ -67,6 +71,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
     - the how to play link on PC has a hover color change to red to show users that they can click the text to see how to play the game. 
 - the background of the instructions page is exactly the same as the index page, this is done intentionally so it seems seamless between the two pages. 
     - this style is also exactly the same dimensions as the canvas and the div element, so they all work identically on any device.
+
 [home](#rex-dash)
 
 ## Testing
@@ -83,7 +88,8 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - Tested Mute function and ensured that all sounds are muted when button is clicked.
   - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
   - had issues with the movement on phone not registering swipe left and right during a swipe up jump (fixed) - this.touchX was registered as variable twice and was resetting initial swipe position instead of registering a swipe.
-    [home](#rex-dash)
+
+[home](#rex-dash)
 
 ## Bugs
 
@@ -98,7 +104,8 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - canvas and title screen jumped when swiping on mobile (fixed) - set the CSS property of canvas and title screen to "touch-action:none".
 - When fullscreen button was clicked it would only go to fullscreen on the Canvas (fixed) - set the property the fullscreen was looking for to the window of the document and not the canvas specifically.
 - Bug where back to title screen button would keep the canvas in the same state it was when button was pressed (fixed) - set the same values as restart game minus the animate(0) call to reset everything when back to home.
-  [home](#rex-dash)
+
+[home](#rex-dash)
 
 ## Credits
 
@@ -111,4 +118,5 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - the heart image was taken from [etsy](https://etsy.com)
 - Audio for title screen and Game run was taken from [PixaBay](https://pixabay.com/music/search/dinosaur/)
 - Animation techniques/Movement techniques were learned from Youtube [Franks Laboratory](https://www.youtube.com/watch?v=GFO_txvwK_c)
-  [home](#rex-dash)
+
+[home](#rex-dash)
