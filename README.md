@@ -20,6 +20,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Inspiration](#inspiration)
 - [Site structure](#site-structure)
 - [Design choices](#design-choices)
+- [Features](#features)
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -73,6 +74,32 @@ The final project that is stored on gitHub is located [here](https://liamedwards
     - this style is also exactly the same dimensions as the canvas and the div element, so they all work identically on any device.
 
 [home](#rex-dash)
+
+## Features
+
+### Index Page 
+
+![full index page screenshot](assets/images/readmeimg/index screenshot.png)
+
+- Mute buttons on the index page
+![Mute buttons screenshot](assets/images/readmeimg/mutefeatures.png)
+There are two different mute functions available to the user so they have the choice to play with or without music and with or without sound effects or with or without sound effects and music.
+this was designed for a more user friendly experience as it gives them more control over what audio is played when playing the game. 
+
+- Full screen button on the index page
+![Fullscreen button screenshot](assets/images/readmeimg/fullscreenbutton.png)
+The full screen button is exactly the same style as the mute buttons for consistency, all of these buttons are located in the top right corner of the index page so they do not take away from the main click to play function.
+
+- How to play link
+![how to play button](assets/images/readmeimg/howtoplaybutton.png)
+The how to play button is larger than the other buttons as I wanted to draw attention to this a little more so users know where to go to find out how they can play the game and the purpose of the game itself.
+    - how to play link CSS
+![how to play button red](assets/images/readmeimg/howtoplaybuttonred.png)
+When hovered over on pc the how to play changes color to red to emphasise to the user that this is a link to be pressed.
+
+- Click to start 
+![click to start button](assets/images/readmeimg/clicktostart.png)
+The click to start button is located in the middle of the screen with the largest font, this also has a different color to the rest of the text to really drive the point that this is the place to click to start the game
 
 ## Testing
 
