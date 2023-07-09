@@ -20,7 +20,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Inspiration](#inspiration)
 - [Site structure](#site-structure)
 - [Design choices](#design-choices)
-- [Features](#features) -[Index page](#index-page) -[Instructions page](#instructions-page)
+- [Features](#features) -[Index page](#index-page) -[Instructions page](#instructions-page) -[Game canvas](#game-canvas)-[Game over](#gameover)
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -127,17 +127,26 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 - Game canvas has your player character 'Rex' starting on the left edge of the screen.
 - The score and your HP are both displayed in the top left corner, this symbolises the "meat" you have collected and the lives you have remaining
-    - These are in place to make sure they are visible but not too distracting of the game
+  - These are in place to make sure they are visible but not too distracting of the game
 - The game music plays as soon as you enter the canvas from the index screen, this can be turned off by pressing the "Music On" button which JS will change the innner.HTML to "Music OFF" this represents the current state of the Audio.
 - Sound effects are activated on ArrowDown, on collision with Egg and on collision with meat, these also can be muted by pressing "SFX on" button, this will in JS change the inner.HTML to "SFX off" this represents the current state of the SFX audio.
-    - Arrow Down sound effect - Makes the character do a T-rex roar
-    - on collision with egg sound effect - A growl.
-    - On collision with meat object - a snarl.
+  - Arrow Down sound effect - Makes the character do a T-rex roar
+  - on collision with egg sound effect - A growl.
+  - On collision with meat object - a snarl.
 - Egg enemies and Meat objects will come at different intervals from the left edge of the screen they spawn progressively quicker the more meat you collect. (difficulty feature)
-    - Meat will spawn at different Y co-ordinates on the map but will never overlap the egg enemies, this gameplay feature is to make the game more friendly. 
-- controls for this game are tailored to both PC and Mobile users. 
+  - Meat will spawn at different Y co-ordinates on the map but will never overlap the egg enemies, this gameplay feature is to make the game more friendly.
+- controls for this game are tailored to both PC and Mobile users.
 
+[home](#rex-dash)
 
+### Gameover
+
+![game over feature](assets/images/readmeimg/gameovercanvas.jpg)
+
+- Game over activates when player loses 5 of their lives.
+- On game over it tells you how you lost, displays the amount of meat collected, the amount of eggs you have evaded, how to return to title and how to restart the game.
+- I have added all the text twice to create a shadow effect to make the text stand out a little better, so users can see it clearly in the center of the screen.
+- On Reset this also returns the music back to it's original starting point at 0;
 
 ## Testing
 
