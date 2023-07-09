@@ -13,13 +13,13 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 
 ## Contents
 
-[Title](#rex-run)
-[Live deployment](#live-deployment)
-[Markup](#markup)
-[User Experience](#user-experience)
-[Testing](#testing)
-[bugs](#bugs)
-[credits](#credits)
+- [Title](#rex-run)
+- [Live deployment](#live-deployment)
+- [Markup](#markup)
+- [User Experience](#user-experience)
+- [Testing](#testing)
+- [bugs](#bugs)
+- [credits](#credits)
 
 ## Markup
 
