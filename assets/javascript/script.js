@@ -490,8 +490,8 @@ window.addEventListener('load', function () {
         Spawns(deltaTime);
         SpawnMeat(deltaTime);
         statusText(ctx);
-        if (Mute) gameAudio.play();
-        if (!gameOver) requestAnimationFrame(animate);
+        if (Mute) gameAudio.play(); 
+        if (!gameOver) requestAnimationFrame(animate); // keeps going until gameOver is true
     };
 });
 

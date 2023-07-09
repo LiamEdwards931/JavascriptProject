@@ -225,8 +225,15 @@ The instruction page has the main purpose of the game in the middle of the page 
     - the basics of it are: a timer will count up to the interval and push an enemy into the empty array when it does so.
     - the update method triggers in the class we created for the enemy that deletes the enemy once it has left the 0 co-ordinate of X 
 - This is also repeated for the meat objects.
-    
 
+## Main game loop 
+
+- The main game loop has all the draw(), update() methods 
+- the game is looped by using: requestanimationframe(animate) <- last part is the functions' name. 
+- it also uses deltaTime which is used to keep time consistent across devices. 
+- I have specified how to calculate this in the comments next to the gameLoop in the script file. 
+
+[home](#rex-dash)
 
 ## Testing
 
