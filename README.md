@@ -20,7 +20,12 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Inspiration](#inspiration)
 - [Site structure](#site-structure)
 - [Design choices](#design-choices)
-- [Features](#features) -[Index page](#index-page) -[Instructions page](#instructions-page) -[Game canvas](#game-canvas)-[Game over](#gameover)
+- [Features](#features) 
+    -[Index page](#index-page) 
+    -[Instructions page](#instructions-page) 
+    -[Game canvas](#game-canvas)
+    -[Game over](#gameover)
+- [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made)
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -147,6 +152,10 @@ The instruction page has the main purpose of the game in the middle of the page 
 - On game over it tells you how you lost, displays the amount of meat collected, the amount of eggs you have evaded, how to return to title and how to restart the game.
 - I have added all the text twice to create a shadow effect to make the text stand out a little better, so users can see it clearly in the center of the screen.
 - On Reset this also returns the music back to it's original starting point at 0;
+
+[home](#rex-dash)
+
+## Explaining the functions of the game (how it was made!)
 
 ## Testing
 
