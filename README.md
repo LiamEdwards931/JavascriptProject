@@ -16,6 +16,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 [Title](#rex-run)
 [Live deployment](#live-deployment)
 [Markup](#markup)
+[User Experience](#user-experience)
 [Testing](#testing)
 [bugs](#bugs)
 [credits](#credits)
@@ -36,6 +37,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - As a user I would expect the game to not be too difficult that it is not fun, but challenging enough to make it enjoyable.
 - As a user I would expect to see an increase in difficulty as I progress.
 - As a user I would expect to see what my scores were when the game has ended.
+  [home](#rex-dash)
 
 ## Testing
 
@@ -51,6 +53,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - Tested Mute function and ensured that all sounds are muted when button is clicked.
   - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
   - had issues with the movement on phone not registering swipe left and right during a swipe up jump (fixed) - this.touchX was registered as variable twice and was resetting initial swipe position instead of registering a swipe.
+    [home](#rex-dash)
 
 ## Bugs
 
@@ -64,7 +67,8 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - Changed the reset game button to shift as there was a problem with the mute button activating when game was resetting.
 - canvas and title screen jumped when swiping on mobile (fixed) - set the CSS property of canvas and title screen to "touch-action:none".
 - When fullscreen button was clicked it would only go to fullscreen on the Canvas (fixed) - set the property the fullscreen was looking for to the window of the document and not the canvas specifically.
-- Bug where back to title screen button would keep the canvas in the same state it was when button was pressed (fixed) - set the same values as restart game minus the animate(0) call to reset everything when back to home
+- Bug where back to title screen button would keep the canvas in the same state it was when button was pressed (fixed) - set the same values as restart game minus the animate(0) call to reset everything when back to home.
+  [home](#rex-dash)
 
 ## Credits
 
@@ -77,3 +81,4 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - the heart image was taken from [etsy](https://etsy.com)
 - Audio for title screen and Game run was taken from [PixaBay](https://pixabay.com/music/search/dinosaur/)
 - Animation techniques/Movement techniques were learned from Youtube [Franks Laboratory](https://www.youtube.com/watch?v=GFO_txvwK_c)
+  [home](#rex-dash)
