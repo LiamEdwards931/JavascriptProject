@@ -174,6 +174,8 @@ The instruction page has the main purpose of the game in the middle of the page 
     if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) - this then behaves the same way the arrow keys did . pushes into array and splices the array in 'touchend'.
 - These controls get called in a later class constructor for the Rex character.
 
+[home](#rex-dash)
+
 ### Creating the characters
 
 - Rex character
@@ -189,7 +191,7 @@ The instruction page has the main purpose of the game in the middle of the page 
   - Because the character jumps we added velocity aka jump height
   - Because the character jumps we added gravity variable
   - Because the rex moves we also add a speed variable.
-  - The different sound effects added to the T-rex are declared her also.
+  - The different sound effects added to the T-rex are declared here also.
   - it has 3 other functions inside of the class:
     - restart() - when the game is restarted the code in this function will run which in this case reset the rex back to it's original start point on the canvas
     - draw(context) - we add an argument because this is creating an object we want it to be drawn on the context variable which for this project is context('2d)
@@ -204,6 +206,26 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 - This technique is repeated for the Eggenemy and Meat objects. 
 
+[home](#rex-dash)
+
+### Collision detection
+
+- Collisions in this game are detected by seeing if two circles have collided.
+    - I calculated this by using pythagoras theory to calculate the hypotenuse between the two circles to calculate the distance between them and to see if they overlapped at any point + if they did it reduced the hp of your character by 1; 
+    - you can see more comments on this within the code itself. [Javascript Code](https://github.com/LiamEdwards931/JavascriptProject/blob/main/assets/javascript/script.js)
+    - the code for what happens on a collision with eggs and meat is found in the update() method of the rex char
+
+## Object Spawning
+
+- Created two variable empty arrays at the top of the file 
+- Created variables for:
+   - intervals - how often the enemy/ meat will spawn
+   - timer - how long it takes since the last time something spawned. 
+- function to spawn the enemies was created:
+    - the basics of it are: a timer will count up to the interval and push an enemy into the empty array when it does so.
+    - the update method triggers in the class we created for the enemy that deletes the enemy once it has left the 0 co-ordinate of X 
+- This is also repeated for the meat objects.
+    
 
 
 ## Testing
