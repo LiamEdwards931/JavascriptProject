@@ -17,9 +17,10 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Live deployment](#live-deployment)
 - [Markup](#markup)
 - [User Experience](#user-experience)
+- [Inspiration](#inspiration)
 - [Testing](#testing)
-- [bugs](#bugs)
-- [credits](#credits)
+- [Bugs](#bugs)
+- [Credits](#credits)
 
 ## Markup
 
@@ -38,6 +39,14 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - As a user I would expect to see an increase in difficulty as I progress.
 - As a user I would expect to see what my scores were when the game has ended.
   [home](#rex-dash)
+
+  ## Inspiration
+
+  - Rex dash was inspired by my love of games and my curiosity into creating web based games using html5, CSS and javascript, this led me to researching and looking at other projects that had been created by other developers and inspired me to make my own. 
+    - Rex dash was inspired by my own personal fondeness of the jurassic era, and I thought it would be great to be able to make a game to reflect that fondness. 
+    - The entire project inspiration was based around a spritesheet I had found online of the orange T-rex and rex-dash was born from that. 
+    - I mapped out the features of the game and the general style I was going for with notepad on my desktop, and implemented piece by piece by adding the media and images I thought would fit well with the style I was looking to create. 
+[home](#rex-dash)
 
 ## Testing
 
