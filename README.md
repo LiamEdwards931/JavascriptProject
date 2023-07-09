@@ -20,11 +20,11 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Inspiration](#inspiration)
 - [Site structure](#site-structure)
 - [Design choices](#design-choices)
-- [Features](#features) 
-    - [Index page](#index-page) 
-    - [Instructions page](#instructions-page) 
-    - [Game canvas](#game-canvas)
-    - [Game over](#gameover)
+- [Features](#features)
+  - [Index page](#index-page)
+  - [Instructions page](#instructions-page)
+  - [Game canvas](#game-canvas)
+  - [Game over](#gameover)
 - [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made)
 - [Testing](#testing)
 - [Bugs](#bugs)
@@ -156,6 +156,35 @@ The instruction page has the main purpose of the game in the middle of the page 
 [home](#rex-dash)
 
 ## Explaining the functions of the game (how it was made!)
+
+### Controls
+
+- PC keyboard
+    - Created a class constructor so it can be called later to move the rex character.
+    - Within the controls I created an empty Array.
+    - Added an event listener for 'keydown' and 'keyup' - key down to push the key into the array only if it is not already in there and keydown to splice that value out of the Array again.
+    - The shift to restart and the tab to return to the title but only if it's game over are called in these event listeners also.
+- Mobile
+    - Added 2 empty string variables for X co-ordinate and Y co-ordinate representing their starting points.
+    - Added threshhold for these touches to register a move e.g min 30px swipe to make character jump.
+    - Added 3 event listeners 'touchstart' 'touchmove' 'touchend'
+    - in 'touchstart' I declare the value of the variables with the empty strings: this.touchY = a.changedTouches[0].pageY; - this is taken from Dev tools and shows you where you have initiated a click on the Y axis. did the same for the X axis.
+    - in 'touchmove' I declare a variable and calculate the distance of the swipe by using: const swipeDist = a.changedTouches[0].pageY - this.touchY; do the same for X co-ordinate;
+    - Create an if statement that registers if a swipe has been done upwards the '-this.touch' is the verticle threshhold of the page:
+    if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) - this then behaves the same way the arrow keys did . pushes into array and splices the array in 'touchend'.
+  
+
+
+
+
+
+- These controls get called in a later class constructor for the Rex character.
+    
+
+
+   
+
+
 
 ## Testing
 
