@@ -26,6 +26,8 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Game canvas](#game-canvas)
   - [Game over](#gameover)
 - [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made)
+    -[Controls](#controls)
+    -[creating the characters]()
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -173,6 +175,31 @@ The instruction page has the main purpose of the game in the middle of the page 
     - Create an if statement that registers if a swipe has been done upwards the '-this.touch' is the verticle threshhold of the page:
     if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) - this then behaves the same way the arrow keys did . pushes into array and splices the array in 'touchend'.
   
+### Creating the characters
+
+- Rex character
+    - Added a class constructor, this constructor had 2 arguments to call it (game.width, game.height) this is the canvas width and height
+    - SRC of the image you want to use as the character.
+    - Declared the x and y positions of the character
+    - Declared to width and height of the character
+    - Declared the frame position of the character i.e which part of the sprite sheet the animation will start from (usually 0) + do code to animate later.
+    - FPS of the character (animation speed)
+    - Because the character jumps we added velocity aka jump height
+    - Because the character jumps we added gravity variable
+    - Because the rex moves we also add a speed variable.
+    - The different sound effects added to the T-rex are declared her also.
+    - it has 3 other functions inside of the class:
+        - restart() - when the game is restarted the code in this function will run which in this case reset the rex back to it's original start point on the canvas
+        - draw(context) - we add an argument because this is creating an object we want it to be drawn on the context variable which for this project is context('2d)
+        - (context.drawImage(image, Source X, Source Y , Source width, Source Height) - the first 5 arguments for the draw image are basically telling us what to crop out on the sprite sheet.
+            - Source X + Y - where to start cropping the sprite sheet.
+            - Source width + height - how big to crop.
+        - This is followed by another 4 arguments(destination x, destination y, destination width , destination height)
+            - destination x and Y - where to place the cropped image.
+            - destination width and height - how big to make the cropped image
+        
+        
+
 
 
 
