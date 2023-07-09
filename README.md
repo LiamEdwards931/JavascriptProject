@@ -1,10 +1,12 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Rex-Dash
-Rex Dash is an endless sidescroll game, the purpose of it is to collect the meat that fly across the screen and to dodge the enemy egg characters, 
+# Rex-Dash
+
+Rex Dash is an endless sidescroll game, the purpose of it is to collect the meat that fly across the screen and to dodge the enemy egg characters,
 this game was designed for anybody of any age to play! it is fully optimised for PC and mobile devices alike and is intented for audiences of all backgrounds.
 
 ## Live deployment
+
 The final project that is stored on gitHub is located [here](https://liamedwards931.github.io/JavascriptProject/)
 
 ![Responsive screen shot of the project](assets/images/readmeimg/responsivescreen.png)
@@ -21,6 +23,19 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 ## Markup
 
 - Code is written using Tab key spacing on Html, CSS and Javascript.
+  [home](#rex-dash)
+
+## User experience
+
+- As a user I would expect a title screen for the game.
+- As a user I would expect there to be some instructions on the purpose of the game.
+- As a user I would expect there to be some instructions on the controls for the game.
+- As a user I would expect there to be some control of the Audio that is played e.g. a mute button.
+- As a user I would expect the game to be simple to understand and play, with pleasing visuals.
+- As a user I would expect smooth gameplay.
+- As a user I would expect the game to not be too difficult that it is not fun, but challenging enough to make it enjoyable.
+- As a user I would expect to see an increase in difficulty as I progress.
+- As a user I would expect to see what my scores were when the game has ended.
 
 ## Testing
 
