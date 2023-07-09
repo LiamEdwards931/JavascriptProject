@@ -20,7 +20,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Inspiration](#inspiration)
 - [Site structure](#site-structure)
 - [Design choices](#design-choices)
-- [Features](#features)
+- [Features](#features) -[Index page](#index-page) -[Instructions page](#instructions-page)
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -28,7 +28,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 ## Markup
 
 - Code is written using Tab key spacing on Html, CSS and Javascript.
-  
+
   [home](#rex-dash)
 
 ## User experience
@@ -42,51 +42,52 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - As a user I would expect the game to not be too difficult that it is not fun, but challenging enough to make it enjoyable.
 - As a user I would expect to see an increase in difficulty as I progress.
 - As a user I would expect to see what my scores were when the game has ended.
-  
+
   [home](#rex-dash)
 
   ## Inspiration
 
-- Rex dash was inspired by my love of games and my curiosity into creating web based games using html5, CSS and javascript, this led me to researching and looking at other projects that had been created by other developers and inspired me to make my own. 
-    - Rex dash was inspired by my own personal fondeness of the jurassic era, and I thought it would be great to be able to make a game to reflect that fondness. 
-    - The entire project inspiration was based around a spritesheet I had found online of the orange T-rex and rex-dash was born from that. 
-    - I mapped out the features of the game and the general style I was going for with notepad on my desktop, and implemented piece by piece by adding the media and images I thought would fit well with the style I was looking to create. 
+- Rex dash was inspired by my love of games and my curiosity into creating web based games using html5, CSS and javascript, this led me to researching and looking at other projects that had been created by other developers and inspired me to make my own.
+  - Rex dash was inspired by my own personal fondeness of the jurassic era, and I thought it would be great to be able to make a game to reflect that fondness.
+  - The entire project inspiration was based around a spritesheet I had found online of the orange T-rex and rex-dash was born from that.
+  - I mapped out the features of the game and the general style I was going for with notepad on my desktop, and implemented piece by piece by adding the media and images I thought would fit well with the style I was looking to create.
 
 [home](#rex-dash)
 
 ## Site Structure
 
 - Rex-dash is composed of 2 pages of HTML.
-- The first html is the index page, the starting page for the user - this page let's you navigate to the "how to play" which is the second html page. 
+- The first html is the index page, the starting page for the user - this page let's you navigate to the "how to play" which is the second html page.
 - The div element is placed in the center of the screen as is the HUB for the game, it allows you to click to play, toggle mute and takes you to the instructions page.
 - the canvas element is placed also in the center of the screen with the exact same dimensions as the div but in JS will only become active once click to play is selected.
 - There is no need for a header or footer as all the navigation elements are within the div which is completely compliant with mobile users.
 
 [home](#rex-dash)
 
-## Design choices 
+## Design choices
 
 - the background of the index page is plain black as I wanted all the user attention to be on the div in the center
-    - within the index page the background is the rex character sleeping under the background image of the game, this blue let's me contrast the links well and makes them easy to read. 
-    - the links all have black slightly transparant backgrounds with white text, so it's obvious they are there but doesn't take away from the main function of clicking to play.
-    - the how to play link on PC has a hover color change to red to show users that they can click the text to see how to play the game. 
-- the background of the instructions page is exactly the same as the index page, this is done intentionally so it seems seamless between the two pages. 
-    - this style is also exactly the same dimensions as the canvas and the div element, so they all work identically on any device.
+  - within the index page the background is the rex character sleeping under the background image of the game, this blue let's me contrast the links well and makes them easy to read.
+  - the links all have black slightly transparant backgrounds with white text, so it's obvious they are there but doesn't take away from the main function of clicking to play.
+  - the how to play link on PC has a hover color change to red to show users that they can click the text to see how to play the game.
+- the background of the instructions page is exactly the same as the index page, this is done intentionally so it seems seamless between the two pages.
+  - this style is also exactly the same dimensions as the canvas and the div element, so they all work identically on any device.
 
 [home](#rex-dash)
 
 ## Features
 
-### Index Page 
+### Index Page
 
-![full index page screenshot](assets/images/readmeimg/indexscreenshot.png)
+![full index page screenshot](assets/images/readmeimg/indexscreenshot.jpg)
 
 - Mute buttons on the index page
+  All font-styles used in this project are 'cursive'
 
 ![Mute buttons screenshot](assets/images/readmeimg/mutefeatures.png)
 
 There are two different mute functions available to the user so they have the choice to play with or without music and with or without sound effects or with or without sound effects and music.
-this was designed for a more user friendly experience as it gives them more control over what audio is played when playing the game. 
+this was designed for a more user friendly experience as it gives them more control over what audio is played when playing the game.
 
 - Full screen button on the index page
 
@@ -98,18 +99,45 @@ The full screen button is exactly the same style as the mute buttons for consist
 
 ![how to play button](assets/images/readmeimg/howtoplaybutton.png)
 
-The how to play button is larger than the other buttons as I wanted to draw attention to this a little more so users know where to go to find out how they can play the game and the purpose of the game itself.
-    - how to play link CSS
+The how to play button is larger than the other buttons as I wanted to draw attention to this a little more so users know where to go to find out how they can play the game and the purpose of the game itself. - how to play link CSS
 
 ![how to play button red](assets/images/readmeimg/howtoplaybuttonred.png)
 
 When hovered over on pc the how to play changes color to red to emphasise to the user that this is a link to be pressed.
 
-- Click to start 
+- Click to start
 
 ![click to start button](assets/images/readmeimg/clicktostart.png)
 
-The click to start button is located in the middle of the screen with the largest font, this also has a different color to the rest of the text to really drive the point that this is the place to click to start the game
+The click to start button is located in the middle of the screen with the largest font, this also has a different color to the rest of the text to really drive the point that this is the place to click to start the game.
+
+[home](#rex-dash)
+
+### Instructions page
+
+![Instruction page screenshot](assets/images/readmeimg/instructionscreenshot.jpg)
+
+The instruction page has the main purpose of the game in the middle of the page with the instructions on how to play just underneath, they both have styling white color with a slight transparent black background for emphasis, this page also has the same position and styling for the back button as the how to play button to keep the consistency.
+
+[home](#rex-dash)
+
+### Game Canvas
+
+![Game canvas](assets/images/readmeimg/gamecanvas.jpg)
+
+- Game canvas has your player character 'Rex' starting on the left edge of the screen.
+- The score and your HP are both displayed in the top left corner, this symbolises the "meat" you have collected and the lives you have remaining
+    - These are in place to make sure they are visible but not too distracting of the game
+- The game music plays as soon as you enter the canvas from the index screen, this can be turned off by pressing the "Music On" button which JS will change the innner.HTML to "Music OFF" this represents the current state of the Audio.
+- Sound effects are activated on ArrowDown, on collision with Egg and on collision with meat, these also can be muted by pressing "SFX on" button, this will in JS change the inner.HTML to "SFX off" this represents the current state of the SFX audio.
+    - Arrow Down sound effect - Makes the character do a T-rex roar
+    - on collision with egg sound effect - A growl.
+    - On collision with meat object - a snarl.
+- Egg enemies and Meat objects will come at different intervals from the left edge of the screen they spawn progressively quicker the more meat you collect. (difficulty feature)
+    - Meat will spawn at different Y co-ordinates on the map but will never overlap the egg enemies, this gameplay feature is to make the game more friendly. 
+- controls for this game are tailored to both PC and Mobile users. 
+
+
 
 ## Testing
 
