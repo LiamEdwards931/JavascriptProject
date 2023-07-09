@@ -25,9 +25,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Instructions page](#instructions-page)
   - [Game canvas](#game-canvas)
   - [Game over](#gameover)
-- [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made)
-    -[Controls](#controls)
-    -[creating the characters]()
+- [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made) -[Controls](#controls) -[creating the characters]()
 - [Testing](#testing)
 - [Bugs](#bugs)
 - [Credits](#credits)
@@ -162,54 +160,49 @@ The instruction page has the main purpose of the game in the middle of the page 
 ### Controls
 
 - PC keyboard
-    - Created a class constructor so it can be called later to move the rex character.
-    - Within the controls I created an empty Array.
-    - Added an event listener for 'keydown' and 'keyup' - key down to push the key into the array only if it is not already in there and keydown to splice that value out of the Array again.
-    - The shift to restart and the tab to return to the title but only if it's game over are called in these event listeners also.
+  - Created a class constructor so it can be called later to move the rex character.
+  - Within the controls I created an empty Array.
+  - Added an event listener for 'keydown' and 'keyup' - key down to push the key into the array only if it is not already in there and keydown to splice that value out of the Array again.
+  - The shift to restart and the tab to return to the title but only if it's game over are called in these event listeners also.
 - Mobile
-    - Added 2 empty string variables for X co-ordinate and Y co-ordinate representing their starting points.
-    - Added threshhold for these touches to register a move e.g min 30px swipe to make character jump.
-    - Added 3 event listeners 'touchstart' 'touchmove' 'touchend'
-    - in 'touchstart' I declare the value of the variables with the empty strings: this.touchY = a.changedTouches[0].pageY; - this is taken from Dev tools and shows you where you have initiated a click on the Y axis. did the same for the X axis.
-    - in 'touchmove' I declare a variable and calculate the distance of the swipe by using: const swipeDist = a.changedTouches[0].pageY - this.touchY; do the same for X co-ordinate;
-    - Create an if statement that registers if a swipe has been done upwards the '-this.touch' is the verticle threshhold of the page:
+  - Added 2 empty string variables for X co-ordinate and Y co-ordinate representing their starting points.
+  - Added threshhold for these touches to register a move e.g min 30px swipe to make character jump.
+  - Added 3 event listeners 'touchstart' 'touchmove' 'touchend'
+  - in 'touchstart' I declare the value of the variables with the empty strings: this.touchY = a.changedTouches[0].pageY; - this is taken from Dev tools and shows you where you have initiated a click on the Y axis. did the same for the X axis.
+  - in 'touchmove' I declare a variable and calculate the distance of the swipe by using: const swipeDist = a.changedTouches[0].pageY - this.touchY; do the same for X co-ordinate;
+  - Create an if statement that registers if a swipe has been done upwards the '-this.touch' is the verticle threshhold of the page:
     if (swipeDist < -this.touchThreshhold && this.keys.indexOf('swipeUp') === -1) - this then behaves the same way the arrow keys did . pushes into array and splices the array in 'touchend'.
-  
+- These controls get called in a later class constructor for the Rex character.
+
 ### Creating the characters
 
 - Rex character
-    - Added a class constructor, this constructor had 2 arguments to call it (game.width, game.height) this is the canvas width and height
-    - SRC of the image you want to use as the character.
-    - Declared the x and y positions of the character
-    - Declared to width and height of the character
-    - Declared the frame position of the character i.e which part of the sprite sheet the animation will start from (usually 0) + do code to animate later.
-    - FPS of the character (animation speed)
-    - Because the character jumps we added velocity aka jump height
-    - Because the character jumps we added gravity variable
-    - Because the rex moves we also add a speed variable.
-    - The different sound effects added to the T-rex are declared her also.
-    - it has 3 other functions inside of the class:
-        - restart() - when the game is restarted the code in this function will run which in this case reset the rex back to it's original start point on the canvas
-        - draw(context) - we add an argument because this is creating an object we want it to be drawn on the context variable which for this project is context('2d)
-        - (context.drawImage(image, Source X, Source Y , Source width, Source Height) - the first 5 arguments for the draw image are basically telling us what to crop out on the sprite sheet.
-            - Source X + Y - where to start cropping the sprite sheet.
-            - Source width + height - how big to crop.
-        - This is followed by another 4 arguments(destination x, destination y, destination width , destination height)
-            - destination x and Y - where to place the cropped image.
-            - destination width and height - how big to make the cropped image
-        
-        
 
+  - Added a class constructor, this constructor had 2 arguments to call it (game.width, game.height) this is the canvas width and height
+  - SRC of the image you want to use as the character.
+  - Declared the x and y positions of the character
+  - Declared to width and height of the character - the math for this is spritesheet image pixel width / amount of sprites in row & image pixel height / amount of sprites in column.
+  - Declared the frame position of the character i.e which part of the sprite sheet the animation will start from (usually 0) + do code to animate later.
+  - Declare frameInterval - how many images in a line on the sprite sheet
+  - Declare frameTimer - how quickly it jumps between animations.
+  - FPS of the character (animation speed)
+  - Because the character jumps we added velocity aka jump height
+  - Because the character jumps we added gravity variable
+  - Because the rex moves we also add a speed variable.
+  - The different sound effects added to the T-rex are declared her also.
+  - it has 3 other functions inside of the class:
+    - restart() - when the game is restarted the code in this function will run which in this case reset the rex back to it's original start point on the canvas
+    - draw(context) - we add an argument because this is creating an object we want it to be drawn on the context variable which for this project is context('2d)
+    - (context.drawImage(image, Source X, Source Y , Source width, Source Height) - the first 5 arguments for the draw image are basically telling us what to crop out on the sprite sheet.
+      - Source X + Y - where to start cropping the sprite sheet.
+      - Source width + height - how big to crop.
+    - This is followed by another 4 arguments(destination x, destination y, destination width , destination height)
+      - destination x and Y - where to place the cropped image.
+      - destination width and height - how big to make the cropped image
+    - The ground work here for beginning the animation is to multiply the cropped X position by this.frameX in the drawImage();
+    - This is then animated in the update(); method which you can see in the [Javascript Code](https://github.com/LiamEdwards931/JavascriptProject/blob/main/assets/javascript/script.js)
 
-
-
-
-
-- These controls get called in a later class constructor for the Rex character.
-    
-
-
-   
+- This technique is repeated for the Eggenemy and Meat objects. 
 
 
 
