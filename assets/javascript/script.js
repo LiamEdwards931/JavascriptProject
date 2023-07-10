@@ -41,8 +41,7 @@ window.addEventListener('load', function () {
                 if ((a.key === 'ArrowDown' ||
                     a.key === 'ArrowUp' ||
                     a.key === 'ArrowLeft' ||
-                    a.key === 'ArrowRight')
-                    && this.keys.indexOf(a.key) === -1) {
+                    a.key === 'ArrowRight') && this.keys.indexOf(a.key) === -1) {
                     this.keys.push(a.key);
                 } else if (a.key === 'Shift' && gameOver) {
                     restartGame();
@@ -87,7 +86,7 @@ window.addEventListener('load', function () {
                 this.keys.splice(this.keys.indexOf('swipeLeft'), 1);
             });
         }
-    };
+    }
 
     //Class to create the Player character object with 2 arguments to keep the character within the game. 
     class Rex {
@@ -134,7 +133,7 @@ window.addEventListener('load', function () {
                     meatCollected++;
                     meat.markedForRemove = true;
                     this.sound.play();
-                };
+                }
             });
             enemies.forEach(enemy => {
                 //calculates the width of characters into the collision
@@ -145,10 +144,10 @@ window.addEventListener('load', function () {
                     hp--;
                     enemy.markedForRemove = true;
                     this.hitSfx.play();
-                };
+                }
                 if (hp === 0) {
                     gameOver = true;
-                };
+                }
             });
             //animation for the rex character
             if (this.frameTimer > this.frameInterval) {
@@ -157,7 +156,7 @@ window.addEventListener('load', function () {
                 this.frameTimer = 0;
             } else {
                 this.frameTimer += deltaTime;
-            };
+            }
             // controls for the rex char 
             if (input.keys.indexOf('ArrowRight') > -1 || input.keys.indexOf('swipeRight') > -1) {
                 this.speed = 5;
@@ -169,7 +168,7 @@ window.addEventListener('load', function () {
                 this.roar.play();
             } else {
                 this.speed = 0;
-            };
+            }
             //Horizontal movement, bounds the character to the canvas width;
             this.x += this.speed;
             if (this.x < 0) this.x = 0;
@@ -188,7 +187,7 @@ window.addEventListener('load', function () {
         onGround() {
             return this.y >= this.gameHeight - this.height;
         }
-    };
+    }
 
     //class to create the background object.
     class Background {
@@ -201,7 +200,7 @@ window.addEventListener('load', function () {
             this.width = 3550;
             this.height = 720;
             this.speed = 5;
-        };
+        }
         draw(context) {
             //draws 2 images for a never ending background - this is called in the update method in animate. 
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
@@ -210,11 +209,11 @@ window.addEventListener('load', function () {
         update() {
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.x = 0;
-        };
+        }
         restart() {
             this.x = 0;
         }
-    };
+    }
 
     //Class structure for the Egg enemies.
     class EggEnemy {
@@ -233,7 +232,7 @@ window.addEventListener('load', function () {
             this.frameInterval = 1000 / this.fps;
             this.speed = Math.random() * 5 + 5; // speed of egg animations
             this.markedForRemove = false;
-        };
+        }
         draw(context) {
             //(image, sx, sy, sw, sh, dx, dy, dw, dh) - crops and places the spritesheet
             context.drawImage(this.image, this.frameX * this.width, 0, this.width, this.height, this.x, this.y - 60, this.width, this.height);
@@ -250,9 +249,9 @@ window.addEventListener('load', function () {
             if (this.x < 0 - this.width) {
                 this.markedForRemove = true; //removes egg enemy from array once they hit the 0 co-ordinate on X-axis.
                 score++;
-            };
+            }
         }
-    };
+    }
 
     //Meat collectible object
     class Meat {
@@ -266,16 +265,16 @@ window.addEventListener('load', function () {
             this.image = document.getElementById('meat');
             this.speed = 10;
             this.markedForRemove = false;
-        };
+        }
         draw(context) {
             context.drawImage(this.image, this.x, this.y, this.width, this.height);
-        };
+        }
         update() {
             this.x -= this.speed;
             if (this.x < 0 - this.width) this.markedForRemove = true;
             distance++;// removes meat object from array when it leaves screen
-        };
-    };
+        }
+    }
 
     /**Pushes new egg enemy into the array every time eggTimer hits the eggInteveral variable and resets it back to 0 to count again when it does.*/
     function Spawns(deltaTime) {
@@ -308,7 +307,7 @@ window.addEventListener('load', function () {
             meatInterval = Math.random() * 700 + 200;
             randomInterval = Math.random() * 600 + 100;
         }
-    };
+    }
 
 
     //handles the spawn times of the meat object
@@ -324,7 +323,7 @@ window.addEventListener('load', function () {
             meat.update();
         });
         meats = meats.filter(meat => !meat.markedForRemove);
-    };
+    }
 
     // variables for the meat images for statusText function.
     let meatImg = document.getElementById('meat');
@@ -367,7 +366,7 @@ window.addEventListener('load', function () {
             context.fillText('Press Shift Or Swipe Down to restart', 222, 452);
             context.fillText('Press TAB or Swipe Up to return to title', 222, 42);
         }
-    };
+    }
 
     /** Restarts the game.*/
     function restartGame() {
@@ -381,7 +380,7 @@ window.addEventListener('load', function () {
         meatCollected = 0;
         gameAudio.currentTime = 0;
         animate(0);
-    };
+    }
 
     /** Toggles fullscreen on canvas.*/
     function toggleFullScreen() {
@@ -392,7 +391,7 @@ window.addEventListener('load', function () {
         } else {
             document.exitFullscreen();
         }
-    };
+    }
     //Event listener for the fullScreen Button
     fullScreen.addEventListener('click', toggleFullScreen);
 
@@ -408,7 +407,7 @@ window.addEventListener('load', function () {
             rexSfx.muted = true;
             trexSfx.muted = true;
             muteButton.innerHTML = "SFX Off";
-        };
+        }
     }
     //Event listener for the Mute button
     muteButton.addEventListener('click', Mute);
@@ -420,7 +419,7 @@ window.addEventListener('load', function () {
         } else {
             gameAudio.muted = true;
             musicButton.innerHTML = "Music Off";
-        };
+        }
     }
     musicButton.addEventListener('click', toggleMusic);
     //Adds the variables to the different assets of the game so they can be called in the animate function.
@@ -452,7 +451,7 @@ window.addEventListener('load', function () {
         startScreen.style.display = "none";
         gameOver = false;
         animate(0); // needs a starting value for the animate "timestamp" or it's 1st value will be undefined.
-    };
+    }
     startButton.addEventListener('click', startGame);
 
     /**
@@ -471,7 +470,7 @@ window.addEventListener('load', function () {
         meatCollected = 0;
         gameAudio.pause();
         gameAudio.currentTime = 0;
-    };
+    }
     window.addEventListener('keydown', a => {
         if (a.key === 'Tab' && gameOver) returnHome();
     });
@@ -490,8 +489,8 @@ window.addEventListener('load', function () {
         Spawns(deltaTime);
         SpawnMeat(deltaTime);
         statusText(ctx);
-        if (Mute) gameAudio.play(); 
+        if (Mute) gameAudio.play();
         if (!gameOver) requestAnimationFrame(animate); // keeps going until gameOver is true
-    };
+    }
 });
 
