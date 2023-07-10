@@ -276,6 +276,14 @@ The instruction page has the main purpose of the game in the middle of the page 
   - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
   - had issues with the movement on phone not registering swipe left and right during a swipe up jump (fixed) - this.touchX was registered as variable twice and was resetting initial swipe position instead of registering a swipe.
 
+### Responsive testing
+
+- Rex-dash has been tested on all mobile devices and runs 
+- Iphone
+    - Verticle
+
+    ![Iphone verticle test]()
+
 ### Validator testing
 
 - No errors returned when code was run through the [HTML W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fliamedwards931.github.io%2FJavascriptProject%2F)
