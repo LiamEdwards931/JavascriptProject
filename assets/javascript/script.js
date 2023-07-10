@@ -26,7 +26,6 @@ window.addEventListener('load', function () {
     let dinoSfx = new Audio("assets/audio/dinosaur-2-86565.mp3");
     let rexSfx = new Audio("assets/audio/JurassicPark-Tyrannosaurus_rex-Roaring.wav");
     let trexSfx = new Audio("assets/audio/T-Rex10.mp3");
-    let titleAudio = new Audio("assets/audio/titlescreen.mp3");
     let gameAudio = new Audio("assets/audio/rungame.mp3");
 
     // Class listens for keyboard event "arrowKeys" pushes them into the this.keys array and the removes it on keyUp event.
@@ -426,8 +425,7 @@ window.addEventListener('load', function () {
     const input = new Controls();
     const rexChar = new Rex(canvas.width, canvas.height);
     const background = new Background(canvas.width, canvas.height);
-    const eggEnemy = new EggEnemy(canvas.width, canvas.height);
-    const meat = new Meat(canvas.width, canvas.height);
+
 
     //time for when last spawn was done.
     let lastTime = 0;
