@@ -16,9 +16,9 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 - [Title](#rex-run)
 - [Live deployment](#live-deployment)
 - [User Experience](#user-experience)
+    - [Site structure](#site-structure)
+    - [Design choices](#design-choices)
 - [Inspiration](#inspiration)
-- [Site structure](#site-structure)
-- [Design choices](#design-choices)
 - [Features](#features)
   - [Index page](#index-page)
   - [Instructions page](#instructions-page)
@@ -55,16 +55,8 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 
   [home](#rex-dash)
 
-  ## Inspiration
 
-- Rex dash was inspired by my love of games and my curiosity into creating web based games using html5, CSS and javascript, this led me to researching and looking at other projects that had been created by other developers and inspired me to make my own.
-  - Rex dash was inspired by my own personal fondeness of the jurassic era, and I thought it would be great to be able to make a game to reflect that fondness.
-  - The entire project inspiration was based around a spritesheet I had found online of the orange T-rex and rex-dash was born from that.
-  - I mapped out the features of the game and the general style I was going for with notepad on my desktop, and implemented piece by piece by adding the media and images I thought would fit well with the style I was looking to create.
-
-[home](#rex-dash)
-
-## Site Structure
+### Site Structure
 
 - Rex-dash is composed of 2 pages of HTML.
 - The first html is the index page, the starting page for the user - this page let's you navigate to the "how to play" which is the second html page.
@@ -74,7 +66,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 
 [home](#rex-dash)
 
-## Design choices
+### Design choices
 
 - the background of the index page is plain black as I wanted all the user attention to be on the div in the center
   - within the index page the background is the rex character sleeping under the background image of the game, this blue let's me contrast the links well and makes them easy to read.
@@ -82,6 +74,15 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - the how to play link on PC has a hover color change to red to show users that they can click the text to see how to play the game.
 - the background of the instructions page is exactly the same as the index page, this is done intentionally so it seems seamless between the two pages.
   - this style is also exactly the same dimensions as the canvas and the div element, so they all work identically on any device.
+
+[home](#rex-dash)
+
+  ## Inspiration
+
+- Rex dash was inspired by my love of games and my curiosity into creating web based games using html5, CSS and javascript, this led me to researching and looking at other projects that had been created by other developers and inspired me to make my own.
+  - Rex dash was inspired by my own personal fondeness of the jurassic era, and I thought it would be great to be able to make a game to reflect that fondness.
+  - The entire project inspiration was based around a spritesheet I had found online of the orange T-rex and rex-dash was born from that.
+  - I mapped out the features of the game and the general style I was going for with notepad on my desktop, and implemented piece by piece by adding the media and images I thought would fit well with the style I was looking to create.
 
 [home](#rex-dash)
 
