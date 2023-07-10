@@ -15,7 +15,6 @@ The final project that is stored on gitHub is located [here](https://liamedwards
 
 - [Title](#rex-run)
 - [Live deployment](#live-deployment)
-- [Markup](#markup)
 - [User Experience](#user-experience)
 - [Inspiration](#inspiration)
 - [Site structure](#site-structure)
@@ -25,16 +24,17 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Instructions page](#instructions-page)
   - [Game canvas](#game-canvas)
   - [Game over](#gameover)
-- [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made) -[Controls](#controls) -[creating the characters]()
+- [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made)
+  - [Controls](#controls)
+  - [creating the characters](#creating-the-characters)
+  - [Collision detection](#collision-detection)
+  - [object spawning](#object-spawning)
+  - [Main game loop](#main-game-loop)
+- [Technology Used](#technology-used)
 - [Testing](#testing)
 - [Bugs](#bugs)
+- [Lighthouse score](#lighthouse-score)
 - [Credits](#credits)
-
-## Markup
-
-- Code is written using Tab key spacing on Html, CSS and Javascript.
-
-  [home](#rex-dash)
 
 ## User experience
 
@@ -204,36 +204,48 @@ The instruction page has the main purpose of the game in the middle of the page 
     - The ground work here for beginning the animation is to multiply the cropped X position by this.frameX in the drawImage();
     - This is then animated in the update(); method which you can see in the [Javascript Code](https://github.com/LiamEdwards931/JavascriptProject/blob/main/assets/javascript/script.js)
 
-- This technique is repeated for the Eggenemy and Meat objects. 
+- This technique is repeated for the Eggenemy and Meat objects.
 
 [home](#rex-dash)
 
 ### Collision detection
 
 - Collisions in this game are detected by seeing if two circles have collided.
-    - I calculated this by using pythagoras theory to calculate the hypotenuse between the two circles to calculate the distance between them and to see if they overlapped at any point + if they did it reduced the hp of your character by 1; 
-    - you can see more comments on this within the code itself. [Javascript Code](https://github.com/LiamEdwards931/JavascriptProject/blob/main/assets/javascript/script.js)
-    - the code for what happens on a collision with eggs and meat is found in the update() method of the rex char
+  - I calculated this by using pythagoras theory to calculate the hypotenuse between the two circles to calculate the distance between them and to see if they overlapped at any point + if they did it reduced the hp of your character by 1;
+  - you can see more comments on this within the code itself. [Javascript Code](https://github.com/LiamEdwards931/JavascriptProject/blob/main/assets/javascript/script.js)
+  - the code for what happens on a collision with eggs and meat is found in the update() method of the rex char
 
 ## Object Spawning
 
-- Created two variable empty arrays at the top of the file 
+- Created two variable empty arrays at the top of the file
 - Created variables for:
-   - intervals - how often the enemy/ meat will spawn
-   - timer - how long it takes since the last time something spawned. 
+  - intervals - how often the enemy/ meat will spawn
+  - timer - how long it takes since the last time something spawned.
 - function to spawn the enemies was created:
-    - the basics of it are: a timer will count up to the interval and push an enemy into the empty array when it does so.
-    - the update method triggers in the class we created for the enemy that deletes the enemy once it has left the 0 co-ordinate of X 
+  - the basics of it are: a timer will count up to the interval and push an enemy into the empty array when it does so.
+  - the update method triggers in the class we created for the enemy that deletes the enemy once it has left the 0 co-ordinate of X
 - This is also repeated for the meat objects.
 
-## Main game loop 
+## Main game loop
 
-- The main game loop has all the draw(), update() methods 
-- the game is looped by using: requestanimationframe(animate) <- last part is the functions' name. 
-- it also uses deltaTime which is used to keep time consistent across devices. 
-- I have specified how to calculate this in the comments next to the gameLoop in the script file. 
+- The main game loop has all the draw(), update() methods
+- the game is looped by using: requestanimationframe(animate) <- last part is the functions' name.
+- it also uses deltaTime which is used to keep time consistent across devices.
+- I have specified how to calculate this in the comments next to the gameLoop in the script file.
 
 [home](#rex-dash)
+
+## Technology used
+
+- Code is written using Tab key spacing on:
+  - Html,
+  - CSS
+  - Javascript.
+- Images were edited in:
+
+  - Photoshop
+
+  [home](#rex-dash)
 
 ## Testing
 
@@ -249,6 +261,8 @@ The instruction page has the main purpose of the game in the middle of the page 
   - Tested Mute function and ensured that all sounds are muted when button is clicked.
   - Tested fullscreen function and ensured that when clicked both the title screen and the canvas both went into the full screen state.
   - had issues with the movement on phone not registering swipe left and right during a swipe up jump (fixed) - this.touchX was registered as variable twice and was resetting initial swipe position instead of registering a swipe.
+
+  - 
 
 [home](#rex-dash)
 
@@ -267,6 +281,10 @@ The instruction page has the main purpose of the game in the middle of the page 
 - Bug where back to title screen button would keep the canvas in the same state it was when button was pressed (fixed) - set the same values as restart game minus the animate(0) call to reset everything when back to home.
 
 [home](#rex-dash)
+
+## Lighthouse score
+
+![Lighthouse score report](assets/images/readmeimg/lighthousescore.png)
 
 ## Credits
 

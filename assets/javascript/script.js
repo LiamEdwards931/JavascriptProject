@@ -98,7 +98,7 @@ window.addEventListener('load', function () {
             this.height = 136; //SpriteHeight
             this.x = 2;
             this.y = this.gameHeight - this.height; // stands the character at bottom of screen
-            this.image = document.getElementById('rex-char');
+            this.image = document.getElementById('rexChar');
             this.frameX = 0; //frame of the animation (horizontal)
             this.frameY = 0; // frame of the animation (verticle)
             this.maxFrame = 2;
