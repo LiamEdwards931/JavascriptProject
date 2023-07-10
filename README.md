@@ -33,9 +33,9 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Main game loop](#main-game-loop)
 - [Technology Used](#technology-used)
 - [Testing](#testing)
-- [Validator testing](#validator-testing)
-- [Bugs](#bugs)
-- [Lighthouse score](#lighthouse-score)
+    - [Validator testing](#validator-testing)
+    - [Bugs](#bugs)
+    - [Lighthouse score](#lighthouse-score)
 - [Deployment](#deployment)
 - [Cloning](#cloning-repository)
 - [Credits](#credits)
@@ -292,7 +292,7 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 [home](#rex-dash)
 
-## Bugs
+### Bugs
 
 - Array for the keys wasn't deleting the key after input (fixed) - There was a typo on splice method and was spelt 'spilce'
 - Player Rex character would float back to the left edge of screen after continuous key presses (fixed) - was a result of a missing bracket on the event listener in the If statement for the keydown.
@@ -308,7 +308,7 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 [home](#rex-dash)
 
-## Lighthouse score
+### Lighthouse score
 
 ![Lighthouse score report](assets/images/readmeimg/lighthousescore.png)
 
