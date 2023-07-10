@@ -24,7 +24,7 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Instructions page](#instructions-page)
   - [Game canvas](#game-canvas)
   - [Game over](#gameover)
-- [Explaining the functions](#explaining-the-functions-of-the-game-how-it-was-made)
+- [Main Functions](#explaining-the-functions-of-the-game-how-it-was-made)
   - [Controls](#controls)
   - [creating the characters](#creating-the-characters)
   - [Collision detection](#collision-detection)
@@ -159,7 +159,7 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 [home](#rex-dash)
 
-## Explaining the functions of the game (how it was made!)
+## Main functions for the game
 
 ### Controls
 
