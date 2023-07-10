@@ -32,9 +32,13 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Main game loop](#main-game-loop)
 - [Technology Used](#technology-used)
 - [Testing](#testing)
+- [Validator testing](#validator-testing)
 - [Bugs](#bugs)
 - [Lighthouse score](#lighthouse-score)
+- [Deployment](#deployment)
+- [Cloning](#cloning-repository)
 - [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
 
 ## User experience
 
@@ -272,7 +276,9 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 ![CSS validator image](assets/images/readmeimg/cssvalidator.png)
 
+- All warnings on JShint say along the lines of "'const' is available in ES6 (use 'esversion: 6') or Mozilla JS extensions (use moz)."
 
+![Javascript Validator](assets/images/readmeimg/jsvalidator.png)
 
 [home](#rex-dash)
 
@@ -296,6 +302,33 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 ![Lighthouse score report](assets/images/readmeimg/lighthousescore.png)
 
+[home](#rex-dash)
+
+## Deployment
+
+- This site was deployed through Github pages the steps to do so are as follows:
+  1. Go to repository of the website you are working on.
+  2. Go to the settings option.
+  3. Scroll down to the pages section on the left hand side.
+  4. Select the main branch to deploy.
+  5. Github will give you the live link for your webpage.
+  - The live site can also be reached here: [Rex-Dash](https://liamedwards931.github.io/JavascriptProject/)
+  - The repository for this site can be reached here: [Rex-Dash repository](https://github.com/LiamEdwards931/JavascriptProject)
+
+[home](#rex-dash)
+
+## Cloning repository
+
+1. On your GitHub repository navigate to your repository page.
+2. Click on the green button with "CODE" written in it.
+3. Go to the HTTPS and copy the URL by pressing the overlapping squares.
+4. Open Git Bash.
+5. Enter git clone followed by the copied URL.
+6. Enter where you would like your repository to be saved too for your local file.
+7. Press Enter to finalise the clone.
+
+[home](#rex-dash)
+
 ## Credits
 
 - T-rex spritesheet was taken from [pngkey](https://www.pngkey.com/download/u2e6o0o0o0w7w7a9_dinosaur-trex-dino-sprite-sheet/)
@@ -307,5 +340,15 @@ The instruction page has the main purpose of the game in the middle of the page 
 - the heart image was taken from [etsy](https://etsy.com)
 - Audio for title screen and Game run was taken from [PixaBay](https://pixabay.com/music/search/dinosaur/)
 - Animation techniques/Movement techniques were learned from Youtube [Franks Laboratory](https://www.youtube.com/watch?v=GFO_txvwK_c)
+
+[home](#rex-dash)
+
+## Acknowledgements
+
+- Rex-Run is a completely free to play game for anyone who wishes to play it, all content used within this media is NOT for commercial use, this game was designed with no intent to distribute for profit. Any similarities between the style of Rex-Run and any other game are completely co-incedental.
+- This project was created for the level 3 diploma Full Stack Developer with the [Code Institute](https://codeinstitute.net/full-stack-software-development-diploma/?utm_term=code%20institute&utm_campaign=CI+-+UK+-+Search+-+Brand&utm_source=adwords&utm_medium=ppc&hsa_acc=8983321581&hsa_cam=1578649861&hsa_grp=62188641240&hsa_ad=635720257674&hsa_src=g&hsa_tgt=kwd-319867646331&hsa_kw=code%20institute&hsa_mt=e&hsa_net=adwords&hsa_ver=3&gad=1&gclid=CjwKCAjw67ajBhAVEiwA2g_jEKYbx7CDH4ExZGh3udf-5qh-Ee91R2MXr7F5M4UdbdDhV-c-QZ-_zxoCyW4QAvD_BwE)
+- [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/) for the constructive feedback with my milestone project.
+
+Liam Edwards 2023.
 
 [home](#rex-dash)
