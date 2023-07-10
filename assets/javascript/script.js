@@ -374,7 +374,7 @@ window.addEventListener('load', function () {
         background.restart();
         enemies = [];
         meats = [];
-        hp = 3;
+        hp = 5;
         score = 0;
         meatCollected = 0;
         gameAudio.currentTime = 0;
@@ -463,7 +463,7 @@ window.addEventListener('load', function () {
         background.restart();
         enemies = [];
         meats = [];
-        hp = 3;
+        hp = 5;
         score = 0;
         meatCollected = 0;
         gameAudio.pause();
