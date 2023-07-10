@@ -24,11 +24,12 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Instructions page](#instructions-page)
   - [Game canvas](#game-canvas)
   - [Game over](#gameover)
-- [Main Functions](#explaining-the-functions-of-the-game-how-it-was-made)
+- [Main Functions](#main-functions-for-the-game)
   - [Controls](#controls)
   - [creating the characters](#creating-the-characters)
   - [Collision detection](#collision-detection)
-  - [object spawning](#object-spawning)
+  - [Object spawning](#object-spawning)
+  - [Parallax background](#parallax-background)
   - [Main game loop](#main-game-loop)
 - [Technology Used](#technology-used)
 - [Testing](#testing)
@@ -229,6 +230,15 @@ The instruction page has the main purpose of the game in the middle of the page 
   - the basics of it are: a timer will count up to the interval and push an enemy into the empty array when it does so.
   - the update method triggers in the class we created for the enemy that deletes the enemy once it has left the 0 co-ordinate of X
 - This is also repeated for the meat objects.
+
+## Parallax background
+
+- Created the background with a class constructor.
+- Declared to images in the draw() function.
+    - image 1 with the original ratio.
+    - image 2 with the same ratio but it's x position is after image 1 
+- In the update() function I add the speed to x position of image 1 to make it move to left screen to create the visual of the background moving
+- I reset the position of image 1 when image 2 hits the 0 co-ordinate of X
 
 ## Main game loop
 
