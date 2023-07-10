@@ -359,9 +359,11 @@ The instruction page has the main purpose of the game in the middle of the page 
   3. Scroll down to the pages section on the left hand side.
 
   ![step2 in deployment](assets/images/readmeimg/step2deploy.png)
+  
   4. Select the main branch to deploy.
 
   ![step3 in deployment](assets/images/readmeimg/step3deploy.png)
+  
   5. Github will give you the live link for your webpage.
   
   ![step4 in deployment](assets/images/readmeimg/step4depploy.png)
