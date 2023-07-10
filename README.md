@@ -33,9 +33,9 @@ The final project that is stored on gitHub is located [here](https://liamedwards
   - [Main game loop](#main-game-loop)
 - [Technology Used](#technology-used)
 - [Testing](#testing)
-    - [Validator testing](#validator-testing)
-    - [Bugs](#bugs)
-    - [Lighthouse score](#lighthouse-score)
+  - [Validator testing](#validator-testing)
+  - [Bugs](#bugs)
+  - [Lighthouse score](#lighthouse-score)
 - [Deployment](#deployment)
 - [Cloning](#cloning-repository)
 - [Credits](#credits)
@@ -235,8 +235,8 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 - Created the background with a class constructor.
 - Declared to images in the draw() function.
-    - image 1 with the original ratio.
-    - image 2 with the same ratio but it's x position is after image 1 
+  - image 1 with the original ratio.
+  - image 2 with the same ratio but it's x position is after image 1
 - In the update() function I add the speed to x position of image 1 to make it move to left screen to create the visual of the background moving
 - I reset the position of image 1 when image 2 hits the 0 co-ordinate of X
 
@@ -278,11 +278,36 @@ The instruction page has the main purpose of the game in the middle of the page 
 
 ### Responsive testing
 
-- Rex-dash has been tested on all mobile devices and runs 
+- Rex-dash has been tested on all mobile devices and runs
 - Iphone
-    - Verticle
 
-    ![Iphone verticle test]()
+  - Verticle
+
+  ![Iphone verticle test](assets/images/readmeimg/iphoneverticle.png)
+
+  - Horizontal
+
+  ![Iphone horizontal test](assets/images/readmeimg/iphonehorizontal.png)
+
+- Samsung
+
+  - Verticle
+
+  ![Samsung verticle test](assets/images/readmeimg/samsungverticle.png)
+
+  - Horizontal
+
+  ![Samsung horizontal test](assets/images/readmeimg/samsunghorizontal.png)
+
+- Ipad
+
+  - Verticle
+
+  ![Ipad verticle test](assets/images/readmeimg/ipadverticle.png)
+
+  - Horizontal
+
+  ![Ipad horizontal test](assets/images/readmeimg/ipadhorizontal.png)
 
 ### Validator testing
 
