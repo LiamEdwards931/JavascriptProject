@@ -353,9 +353,19 @@ The instruction page has the main purpose of the game in the middle of the page 
 - This site was deployed through Github pages the steps to do so are as follows:
   1. Go to repository of the website you are working on.
   2. Go to the settings option.
+
+  ![step1 in deployment](assets/images/readmeimg/step1deploy.png)
+  
   3. Scroll down to the pages section on the left hand side.
+
+  ![step2 in deployment](assets/images/readmeimg/step2deploy.png)
   4. Select the main branch to deploy.
+
+  ![step3 in deployment](assets/images/readmeimg/step3deploy.png)
   5. Github will give you the live link for your webpage.
+  
+  ![step4 in deployment](assets/images/readmeimg/step4depploy.png)
+  
   - The live site can also be reached here: [Rex-Dash](https://liamedwards931.github.io/JavascriptProject/)
   - The repository for this site can be reached here: [Rex-Dash repository](https://github.com/LiamEdwards931/JavascriptProject)
 
